@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
     skills: [{ type: String }],
     location: { type: String },
     linkedin: { type: String },
+    profilePic:{type:String},
     resume: [{ type: Buffer }],
     appliedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
     savedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],

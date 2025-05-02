@@ -56,19 +56,34 @@ const protect = async (req, res, next) => {
 const employerProtect = async (req, res, next) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];
-
-    if (!token) return res.status(401).json({ message: "No token provided" });
-
+    const admintoken=req.cookies.token
+    
+    
+    if (!token || !admintoken) return res.status(401).json({ message: "No token provided" });
+if(admintoken){
+  const admindecoded = jwt.verify(admintoken, process.env.JWT_SECRET);
+  console.log(admindecoded)
+ if(admindecoded.role=="admin"){
+  req.role="admin"
+  req.id=admindecoded.id;
+ return next();
+ }
+}
+  else{
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const employer = await Employer.findById(decoded.id);
-
+    
     if (!employer) return res.status(401).json({ message: "Invalid employer token" });
 
     req.employer = employer;
-    next();
-  } catch (err) {
-    return res.status(401).json({ message: "Not authorized, token failed", error: err.message });
+ return    next();
   }
+    
+   
+  } catch (err) {
+    console.log(err)
+    return res.status(401).json({ message: "Not authorized, token failed anuj", error: err.message });
+  }
 };
 const allProtect = async (req, res, next) => {
   let token = req.cookies.token

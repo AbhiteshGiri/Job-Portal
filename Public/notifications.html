@@ -520,7 +520,7 @@
     <script>
       async function getnotification() {
         try {
-          const res = await fetch("http://localhost:3000/user/job-notification", {
+          const res = await fetch("/user/job-notification", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const jobSchema = new mongoose.Schema(
   {
     title: { type: String },
-    Employer_id: { type: mongoose.Schema.Types.ObjectId, ref: "Employer", required: true },
+    Employer_id: { type: mongoose.Schema.Types.ObjectId, ref: "Employer", },
     company: { type: String},
     location: { type: String }, // Optional
     category: { 

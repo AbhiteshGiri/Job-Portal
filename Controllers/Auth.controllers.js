@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
     password,
   } = req.body;
   const resume = req.file ? req.file.path : null;
-
+  const profilePic= req.file? req.file.path:null;
   try {
     const userExists = await User.findOne({ email });
     if (userExists)
@@ -41,6 +41,7 @@ const registerUser = async (req, res) => {
       experience,
       skills,
       location,
+      profilePic,
       linkedin,
       password: hashedPassword,
       resume,
@@ -151,7 +152,8 @@ const registerUser = async (req, res) => {
 // };
 
 const registerEmployer = async (req, res) => {
-  const { companyName, email, password, industry, website, companyLogo, name } =
+  const companyLogo=req.file.path;
+  const { companyName, email, password, industry, website, name } =
     req.body;
 
   try {

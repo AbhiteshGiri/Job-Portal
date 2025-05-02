@@ -29,7 +29,7 @@ app.use('/auth',authRoute)
 app.use('/admin',adminRouter)
 app.use('/employer',employer)
 app.use(express.static((path.join(__dirname,'./Public'))));
-app.use('/uploads/resumes', express.static(path.join(__dirname, 'uploads/resumes')));
+app.use('/uploads/resume', express.static(path.join(__dirname, 'uploads/resume')));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "./Public", "index.html"));
 });

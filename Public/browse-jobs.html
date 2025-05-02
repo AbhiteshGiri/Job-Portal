@@ -717,7 +717,7 @@
 
         try {
           const res = await fetch(
-            `http://localhost:3000/job/jobs?keyword=${keyword}&location=${location}`
+            `/job/jobs?keyword=${keyword}&location=${location}`
           );
           const jobs = await res.json();
           console.log(jobs);
@@ -769,7 +769,7 @@
                     <div class="row">
                       <div class="col-lg-6 col-md-6 col-xs-12">
                         <div class="job-company-logo">
-                          <img src="localhost:3000/uploads/resume/${job.logo}" alt="">
+                          <img src="/uploads/resume/${job.logo}" alt="">
                         </div>
                         <div class="job-details">
                           <h3>${job.title}</h3>

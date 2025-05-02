@@ -114,7 +114,7 @@
       }
   
       try {
-        const res = await fetch("http://localhost:3000/auth/verify-employer", {
+        const res = await fetch("/auth/verify-employer", {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ otp, email }),
@@ -149,7 +149,7 @@
       }
   
       try {
-        const res = await fetch("http://localhost:3000/auth/resend-otp", {
+        const res = await fetch("/auth/resend-otp", {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email })

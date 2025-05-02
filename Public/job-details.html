@@ -666,7 +666,7 @@
 
       async function loadJobDetails() {
         try {
-          const res = await fetch(`http://localhost:3000/job/job/${jobId}`);
+          const res = await fetch(`/job/job/${jobId}`);
           const job = await res.json();
 
           document.getElementById("job-description").textContent =
@@ -696,7 +696,7 @@
 
           // Check if already applied
           const checkRes = await fetch(
-            `http://localhost:3000/user/check-application/${jobId}`,
+            `/user/check-application/${jobId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -715,7 +715,7 @@
           bsModal.show();
           window.currentModal = bsModal;
 
-          const res = await fetch("http://localhost:3000/user/resumes", {
+          const res = await fetch("/user/resumes", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -777,7 +777,7 @@
         }
 
         try {
-          const res = await fetch("http://localhost:3000/user/applyjob", {
+          const res = await fetch("/user/applyjob", {
             method: "POST",
             headers: {
               // Only include the token here. Do NOT set the content type manually!

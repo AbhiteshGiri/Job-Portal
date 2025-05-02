@@ -3,9 +3,9 @@ const { registerUser, loginUser, registerEmployer, loginHandler,verifyOTP,resend
 const router = express.Router();
 const upload =require('../Middlewares/uploadMiddlewares')
 const path=require('path')
-router.post('/register-user', upload.single('resume'), registerUser);
+router.post('/register-user', upload.single('resume'),upload.single('profilePic'), registerUser);
 //router.post('/login-user', loginUser);
-router.post('/register-employer', registerEmployer);
+router.post('/register-employer',upload.single('companyLogo'), registerEmployer);
 router.post('/login-employer', loginHandler);
 router.post('/verify-employer', verifyOTP);  
 router.post('/resend-otp', resendOTP);

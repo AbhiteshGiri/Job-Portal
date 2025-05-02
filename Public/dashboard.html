@@ -13,7 +13,6 @@
     .card { border: none; border-radius: 15px; }
     .profile-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #adb5bd; }
   </style>
-  <link rel="icon" href="./JobXSearch/logo.png">
 </head>
 <body>
   <div class="container-fluid">
@@ -45,7 +44,7 @@
       <div class="card mb-4 shadow-sm p-4">
         <div class="row align-items-center">
           <div class="col-md-2 text-center">
-            <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img" id="profilepic">
           </div>
           <div class="col-md-10">
             <h4 id="userName">Name</h4>
@@ -163,11 +162,13 @@
 
     async function fetchDashboardData() {
       try {
-        const res = await fetch("http://localhost:3000/employer/dashboard", {
-          headers: {Authorization: `Bearer ${token} `},
+        const res = await fetch("/employer/dashboard", {
+          headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error("Failed to fetch dashboard data");
-        return await res.json();
+       let data= await res.json();
+       
+        return data
       } catch (err) {
         console.error(err);
         alert("Error loading dashboard.");
@@ -178,9 +179,9 @@
     function renderJobsOrApplications(jobs, isJobseeker) {
       const contentArea = document.getElementById("contentArea");
       contentArea.innerHTML = `<h3 class="mb-4">${isJobseeker ? 'Your Applications' : 'Your Job Posts'}</h3>`;
-
+     
       if (!jobs || jobs.length === 0) {
-        contentArea.innerHTML +=` <p class="text-muted">${isJobseeker ? 'You haven\'t applied to any jobs yet.' : 'You haven\'t posted any jobs yet.'}</p>`;
+        contentArea.innerHTML += `<p class="text-muted">${isJobseeker ? 'You haven\'t applied to any jobs yet.' : 'You haven\'t posted any jobs yet.'}</p>`;
         return;
       }
 
@@ -188,31 +189,25 @@
       table.className = "table table-striped";
       table.innerHTML = `
         <thead><tr>
-          <th>Logo</th><th>Title</th><th>Company</th><th>Location</th><th>Salary</th><th>Tags</th><th>Closing</th><th>Status</th>${isJobseeker ? "" : "<th>Actions</th>"}
+          <th>Logo</th><th>Title</th><th>Company</th><th>Location</th><th>Salary</th><th>Tags</th><th>Closing</th>${isJobseeker ? "" : "<th>Actions</th>"}
         </tr></thead><tbody id="jobsTableBody"></tbody>
       `;
       contentArea.appendChild(table);
 
       const tbody = table.querySelector("#jobsTableBody");
 
-      jobs.forEach(job => {
+      jobs.forEach(item => {
+        const job =item.job;
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td><img src="http://localhost:3000/uploads/resume/${job.logo || 'placeholder.png'}" style="height: 40px;"></td>
+          <td><img src="/uploads/resume/${job.logo || 'placeholder.png'}" style="height: 40px;"></td>
           <td>${job.title}</td>
           <td>${job.company}</td>
           <td>${job.location}</td>
           <td>₹${job.salary || 'N/A'}</td>
           <td>${job.tags?.join(", ")}</td>
           <td>${job.closingDate ? new Date(job.closingDate).toDateString() : 'N/A'}</td>
-         <td>
-            <select onchange="updateJobStatus('${job._id}', this.value)">
-              <option value="active" ${job.status === 'active' ? 'selected' : ''}>Active</option>
-              <option value="pending" ${job.status === 'pending' ? 'selected' : ''}>Pending</option>
-              <option value="closed" ${job.status === 'closed' ? 'selected' : ''}>Closed</option>
-            </select>
-          </td>
-          
+
           
           ${isJobseeker ? "" : `
           <td>
@@ -227,11 +222,11 @@
     }
     async function updateJobStatus(jobId, newStatus) {
       try {
-        const res = await fetch(`http://localhost:3000/job/status/${jobId}`, {
+        const res = await fetch(`/job/status/${jobId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            Authorization:` Bearer ${token}`
+            Authorization: `Bearer ${token}`
           },
           body: JSON.stringify({ status: newStatus })
         });
@@ -249,14 +244,14 @@
       }
     }
     async function Applicant(jobId) {
-      console.log(jobId)
+      
       try {
-        const res = await fetch(`http://localhost:3000/job/applicants/${jobId}`, {
+        const res = await fetch(`/job/applicants/${jobId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (!res.ok) throw new Error("Failed to fetch applicants");
         const applicants = await res.json();
-        console.log(applicants)
+        
         const body = document.getElementById("applicantBody");
         body.innerHTML = applicants.length === 0
           ? "<p class='text-muted'>No applicants yet.</p>"
@@ -271,8 +266,8 @@
                     <td>${applicant.applicant.name}</td>
                     <td>${applicant.applicant.email}</td>
                     <td>
-                      <a href="http://localhost:3000/${applicant.resume}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
-                      <a href="http://localhost:3000/${applicant.resume}" download class="btn btn-sm btn-outline-success ms-2">Download</a>
+                      <a href="/${applicant.resume}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+                      <a href="/${applicant.resume}" download class="btn btn-sm btn-outline-success ms-2">Download</a>
                     </td>
                   </tr>
                 `).join("")}
@@ -303,7 +298,7 @@
 
     async function deleteJob(jobId) {
       if (!confirm("Are you sure you want to delete this job?")) return;
-      const res = await fetch(`http://localhost:3000/job/delete/${jobId}`, {
+      const res = await fetch(`/job/delete/${jobId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -325,7 +320,7 @@
         description: document.getElementById("editDescription").value,
         tags: document.getElementById("editTags").value.split(',').map(tag => tag.trim()),
       };
-      const res = await fetch(`http://localhost:3000/job/update/${jobId}`, {
+      const res = await fetch(`/job/update/${jobId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(updatedJob),
@@ -344,6 +339,7 @@
       tbody.innerHTML = activities.length === 0
         ? `<tr><td colspan="3" class="text-center">No recent activity.</td></tr>`
         : activities.map((act, i) =>
+        
           `<tr><td>${i + 1}</td><td>${act.description}</td><td>${new Date(act.date).toDateString()}</td></tr>`
         ).join('');
     }
@@ -355,13 +351,14 @@
       contentArea.appendChild(template.content.cloneNode(true));
 
       const profile = await fetchDashboardData();
-
+      console.log(profile.companyLogo)
+      document.getElementById("profilepic").src=`${profile.companyLogo|| profile.profilepic }`
       document.getElementById("userName").textContent = profile.name;
       document.getElementById("userEmail").textContent = profile.email;
       document.getElementById("userRole").textContent = profile.role;
       document.getElementById("userJoined").textContent = new Date(profile.joined).toDateString();
       document.getElementById("userLastLogin").textContent = new Date(profile.lastLogin).toDateString();
-      document.getElementById("greeting").textContent =` Welcome, ${profile.name}!`;
+      document.getElementById("greeting").textContent = `Welcome, ${profile.name}!`;
       document.getElementById("roleDisplay").textContent = `Your role: ${profile.role}`;
 
       ['jobSeekerSummary', 'savedJobs', 'seekerMessages', 'recruiterSummary', 'applicantsCount', 'recruiterMessages']
@@ -407,11 +404,11 @@
             </div>
             <div class="col-md-6">
               <label class="form-label">Email</label>
-              <input type="email" class="form-control" name="email" value="${profile.email}" />
+              <input type="email" class="form-control" name="email" value="${profile.email}"disabled />
             </div>
             <div class="col-md-6">
               <label class="form-label">Role</label>
-              <input type="text" class="form-control" name="role" value="${profile.role}" />
+              <input type="text" class="form-control" name="role" value="${profile.role}" disabled/>
             </div>
             <div class="col-md-6">
               <label class="form-label">Joined On</label>
@@ -431,6 +428,16 @@
 
 
     loadDashboard();
+
+    document.getElementById("logoutLink").addEventListener('click',()=>{
+     let a= confirm(" Are you sure Want to logout ")
+     if(a){
+      localStorage.removeItem('token');
+      document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        window.location.href='login.html'
+     }
+   
+    })
   </script>
 </body>
 </html>

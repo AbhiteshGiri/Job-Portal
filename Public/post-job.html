@@ -653,7 +653,7 @@
               <form class="form-ad" enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="control-label">Job Title</label>
-                  <input type="text" name="jobTitle" class="form-control" placeholder="Write job title" />
+                  <input type="text" name="title" class="form-control" placeholder="Write job title" />
                 </div>
                 <div class="form-group">
                   <label class="control-label">Company</label>
@@ -938,7 +938,7 @@
   
       try {
         //alert(localStorage.getItem("token"))
-        const response = await fetch('http://localhost:3000/job/create', {
+        const response = await fetch('/job/create', {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`, 

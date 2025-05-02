@@ -5,7 +5,18 @@ const Job = require('../Models/job.model')
 const createJob = async (req, res) => {
   try {
     const { body, files } = req;
-   
+   if(req.role=='admin'){
+    const newJob = new Job({
+      ...body,
+     // Employer_id: req.id,
+      logo: files?.companyLogo?.[0]?.filename || '',
+      jdFile: files?.jobDescriptionFile?.[0]?.filename || ''
+      
+    });
+    const savedJob = await newJob.save();
+    return  res.status(201).json(savedJob);
+   }
+   else{
     const newJob = new Job({
       ...body,
       Employer_id: req.employer._id,
@@ -17,9 +28,11 @@ const createJob = async (req, res) => {
     await req.employer.save();
     const savedJob = await newJob.save();
     res.status(201).json(savedJob);
+   }
+    
   } catch (error) {
-    res.status(500).json({ message:  error.message });
-  }
+    res.status(500).json({ message:  error.message });
+  }
 };
 
 // UPDATE

@@ -26,6 +26,7 @@ const getdashboard = async (req, res) => {
         email: profile.email,
         role: "jobseeker",
         img:profile.image,
+        profilePic:profile.profilePic,
         joined: profile.createdAt?.toDateString() || "Unknown",
         lastLogin: profile.updatedAt?.toDateString() || "Unknown",
         jobsApplied: profile.appliedJobs.length,
@@ -56,6 +57,7 @@ const getdashboard = async (req, res) => {
         joined: profile.createdAt?.toDateString() || "Unknown",
         lastLogin: profile.updatedAt?.toDateString() || "Unknown",
         jobsPosted: profile.jobPosts.length,
+        companyLogo:profile.companyLogo,
         jobsPost:profile.jobPosts,
         totalApplicants: profile.jobPosts.reduce(
           (acc, job) => acc + (job.applicants?.length || 0),
