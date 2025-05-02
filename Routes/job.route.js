@@ -1,5 +1,5 @@
 const express = require('express');
-const {  createJob, updateJob, deleteJob,getApplicant } = require('../Controllers/JobController');
+const {  createJob, updateJob, deleteJob,getApplicant } = require('../Controllers/jobcontroller');
 const {  employerProtect } = require('../Middlewares/authMiddleware');
 const upload = require("../Middlewares/uploadMiddlewares")
 const {ChangeStatus}=require('../Controllers/AdminController')
