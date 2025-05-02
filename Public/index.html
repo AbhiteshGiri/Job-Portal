@@ -13,21 +13,27 @@
       content="Bootstrap, Landing page, Template, Registration, Landing"
     />
     <meta name="author" content="UIdeck" />
-    <link rel="icon" href="./JobXSearch/logo.png">
+    <link rel="icon" href="./JobXSearch/logo.png" />
     <title>ABCD</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./JobXSearch/bootstrap.min.css" />
     <link rel="stylesheet" href="./JobXSearch/line-icons.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./JobXSearch/owl.carousel.min.css" />
     <link rel="stylesheet" href="./JobXSearch/owl.theme.default.css" />
     <link rel="stylesheet" href="./JobXSearch/slicknav.min.css" />
     <link rel="stylesheet" href="./JobXSearch/animate.css" />
     <link rel="stylesheet" href="./JobXSearch/main.css" />
     <link rel="stylesheet" href="./JobXSearch/responsive.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lineicons/2.0/LineIcons.css">
-    <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lineicons/2.0/LineIcons.css"
+    />
+    <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
 
     <link
       rel="stylesheet"
@@ -41,38 +47,44 @@
       type="text/css"
     />
     <!-- Custom Hover Effects -->
-<style>
-  .job-posting-float-card{
-    height: 3%;
-    position:Fixed;
-    top: 10%;
-   
-  }
-  .custom-hover-button {
-    transition: all 0.3s ease;
-    color: black;
-  }
-  .custom-hover-button:hover {
-    background-color: #ff7e5f;
-    color: white;
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.6);
-  }
+    <style>
+      .job-posting-float-card {
+        height: 3%;
+        position: Fixed;
+        top: 10%;
+      }
+      .custom-hover-button {
+        transition: all 0.3s ease;
+        color: black;
+      }
+      .custom-hover-button:hover {
+        background-color: #ff7e5f;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(255, 126, 95, 0.6);
+      }
 
-  @keyframes flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-      opacity: 1;
-    }
-    20%, 24%, 55% {
-      opacity: 0;
-    }
-  }
+      @keyframes flicker {
+        0%,
+        18%,
+        22%,
+        25%,
+        53%,
+        57%,
+        100% {
+          opacity: 1;
+        }
+        20%,
+        24%,
+        55% {
+          opacity: 0;
+        }
+      }
 
-  .flicker-effect {
-    animation: flicker 2s infinite;
-  }
-</style>
-
+      .flicker-effect {
+        animation: flicker 2s infinite;
+      }
+    </style>
   </head>
 
   <body>
@@ -273,9 +285,7 @@
             </div>
           </div>
         </div>
-        <div class="mobile-menu" data-logo="/JobXSearch/logo.png">
-          
-        </div>
+        <div class="mobile-menu" data-logo="/JobXSearch/logo.png"></div>
       </nav>
       <!-- Navbar End -->
 
@@ -283,10 +293,14 @@
         <div class="row space-100 justify-content-center">
           <div class="col-lg-10 col-md-12 col-xs-12">
             <div class="contents">
-              <h2 class="head-title"> Find Your  Dream Jobs With Based On Your Skills</h2>
+              <h2 class="head-title">
+                Find Your Dream Jobs With Based On Your Skills
+              </h2>
               <p>
-                We bridge the gap between talent and opportunity, making job hunting seamless and stress-free. <br />
-                From resumes to interviews, we guide you every step of the way to land your dream job!"
+                We bridge the gap between talent and opportunity, making job
+                hunting seamless and stress-free. <br />
+                From resumes to interviews, we guide you every step of the way
+                to land your dream job!"
               </p>
               <div class="job-search-form">
                 <form>
@@ -304,7 +318,10 @@
                       <div class="form-group">
                         <div class="search-category-container">
                           <label class="styled-select">
-                            <select id="locationSelect" onchange="handleLocationChange()">
+                            <select
+                              id="locationSelect"
+                              onchange="handleLocationChange()"
+                            >
                               <option value="">Select Location</option>
                               <option value="Noida">Noida</option>
                               <option value="Chennai">Chennai</option>
@@ -316,7 +333,6 @@
                               <option value="Bangalore">Bangalore</option>
                               <option value="access">Access my Location</option>
                             </select>
-              
                           </label>
                         </div>
                         <i class="lni lni-map-marker-5"></i>
@@ -357,23 +373,45 @@
     </header>
     <!-- Header Section End -->
 
-
-   <!-- Floating Job Free Posting Card -->
-<div class="job-posting-float-card position-fixed flicker-effect" style="bottom: 20px; right: 20px; z-index: 999;">
-  <div class="card shadow-lg border-0 flicker-effect" style="width: 260px; background: linear-gradient(135deg, #ff7e5f, #feb47b); color: white; border-radius: 20px; overflow: hidden;">
-    <div class="card-body text-center p-3">
-      <!-- 3D Animation -->
-      <div class="lottie-container mb-2" style="height: 80px;">
-        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_puciaact.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+    <!-- Floating Job Free Posting Card -->
+    <div
+      class="job-posting-float-card position-fixed flicker-effect"
+      style="bottom: 20px; right: 20px; z-index: 999"
+    >
+      <div
+        class="card shadow-lg border-0 flicker-effect"
+        style="
+          width: 260px;
+          background: linear-gradient(135deg, #ff7e5f, #feb47b);
+          color: white;
+          border-radius: 20px;
+          overflow: hidden;
+        "
+      >
+        <div class="card-body text-center p-3">
+          <!-- 3D Animation -->
+          <div class="lottie-container mb-2" style="height: 80px">
+            <lottie-player
+              src="https://assets1.lottiefiles.com/packages/lf20_puciaact.json"
+              background="transparent"
+              speed="1"
+              style="width: 100%; height: 100%"
+              loop
+              autoplay
+            ></lottie-player>
+          </div>
+          <!-- Text -->
+          <h6 class="card-title fw-bold mb-1">Unlimited Jobs</h6>
+          <p class="card-text small">Post your jobs absolutely FREE!</p>
+          <a
+            href="./post-job.html"
+            class="btn btn-light btn-sm fw-bold mt-2 custom-hover-button flicker-effect"
+            >Post Now in Free🚀</a
+          >
+        </div>
       </div>
-      <!-- Text -->
-      <h6 class="card-title fw-bold mb-1">Unlimited Jobs</h6>
-      <p class="card-text small">Post your jobs absolutely FREE!</p>
-      <a href="/post-job" class="btn btn-light btn-sm fw-bold mt-2 custom-hover-button flicker-effect">Post Now 🚀</a>
     </div>
-  </div>
-</div>
-<!-- End Free Section -->
+    <!-- End Free Section -->
     <!-- Category Section Start -->
     <section class="category section bg-gray">
       <div class="container">
@@ -470,17 +508,11 @@
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-12 col-xs-12">
-            <a
-              class="job-listings-featured"
-              href="./job-details.html"
-            >
+            <a class="job-listings-featured" href="./job-details.html">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                   <div class="job-company-logo">
-                    <img
-                      src="./JobXSearch/img1.png"
-                      alt=""
-                    />
+                    <img src="./JobXSearch/img1.png" alt="" />
                   </div>
                   <div class="job-details">
                     <h3>Software Engineer</h3>
@@ -503,17 +535,11 @@
             </a>
           </div>
           <div class="col-lg-6 col-md-12 col-xs-12">
-            <a
-              class="job-listings-featured"
-              href="./job-details.html"
-            >
+            <a class="job-listings-featured" href="./job-details.html">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                   <div class="job-company-logo">
-                    <img
-                      src="./JobXSearch/img2.png"
-                      alt=""
-                    />
+                    <img src="./JobXSearch/img2.png" alt="" />
                   </div>
                   <div class="job-details">
                     <h3>Graphic Designer</h3>
@@ -536,17 +562,11 @@
             </a>
           </div>
           <div class="col-lg-6 col-md-12 col-xs-12">
-            <a
-              class="job-listings-featured"
-              href="./job-details.html"
-            >
+            <a class="job-listings-featured" href="./job-details.html">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                   <div class="job-company-logo">
-                    <img
-                      src="./JobXSearch/img3.png"
-                      alt=""
-                    />
+                    <img src="./JobXSearch/img3.png" alt="" />
                   </div>
                   <div class="job-details">
                     <h3>Managing Director</h3>
@@ -569,17 +589,11 @@
             </a>
           </div>
           <div class="col-lg-6 col-md-12 col-xs-12">
-            <a
-              class="job-listings-featured"
-              href="./job-details.html"
-            >
+            <a class="job-listings-featured" href="./job-details.html">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                   <div class="job-company-logo">
-                    <img
-                      src="./JobXSearch/img4.png"
-                      alt=""
-                    />
+                    <img src="./JobXSearch/img4.png" alt="" />
                   </div>
                   <div class="job-details">
                     <h3>Software Engineer</h3>
@@ -602,17 +616,11 @@
             </a>
           </div>
           <div class="col-lg-6 col-md-12 col-xs-12">
-            <a
-              class="job-listings-featured"
-              href="./job-details.html"
-            >
+            <a class="job-listings-featured" href="./job-details.html">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                   <div class="job-company-logo">
-                    <img
-                      src="./JobXSearch/img5.png"
-                      alt=""
-                    />
+                    <img src="./JobXSearch/img5.png" alt="" />
                   </div>
                   <div class="job-details">
                     <h3>Graphic Designer</h3>
@@ -635,17 +643,11 @@
             </a>
           </div>
           <div class="col-lg-6 col-md-12 col-xs-12">
-            <a
-              class="job-listings-featured"
-              href="./job-details.html"
-            >
+            <a class="job-listings-featured" href="./job-details.html">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                   <div class="job-company-logo">
-                    <img
-                      src="./JobXSearch/img6.png"
-                      alt=""
-                    />
+                    <img src="./JobXSearch/img6.png" alt="" />
                   </div>
                   <div class="job-details">
                     <h3>Managing Director</h3>
@@ -668,11 +670,7 @@
             </a>
           </div>
           <div class="col-12 text-center mt-4">
-            <a
-              href="./job-page.html"
-              class="btn btn-common"
-              >Browse All Jobs</a
-            >
+            <a href="./job-page.html" class="btn btn-common">Browse All Jobs</a>
           </div>
         </div>
       </div>
@@ -692,21 +690,13 @@
                   personalized salary estimate. Read reviews on over 600,000
                   companies worldwide. The right job is out there.
                 </p>
-                <a
-                  class="btn btn-common"
-                  href="./index.html#"
-                  >Search jobs</a
-                >
+                <a class="btn btn-common" href="./index.html#">Search jobs</a>
               </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="img-thumb">
-              <img
-                class="img-fluid"
-                src="./JobXSearch/search.png"
-                alt=""
-              />
+              <img class="img-fluid" src="./JobXSearch/search.png" alt="" />
             </div>
           </div>
         </div>
@@ -720,7 +710,12 @@
         <div class="section-header">
           <h2 class="section-title">How It Works?</h2>
           <p>
-            "Whether you're a job seeker or a recruiter, we make the process seamless! Job seekers can create a profile, explore opportunities, and apply with ease,<br> while recruiters can post jobs, find top talent, and hire effortlessly. Connecting the right people to the right opportunities—made simple and stress-free!"
+            "Whether you're a job seeker or a recruiter, we make the process
+            seamless! Job seekers can create a profile, explore opportunities,
+            and apply with ease,<br />
+            while recruiters can post jobs, find top talent, and hire
+            effortlessly. Connecting the right people to the right
+            opportunities—made simple and stress-free!"
           </p>
         </div>
         <div class="row">
@@ -771,24 +766,19 @@
         <div class="section-header">
           <h2 class="section-title">Latest Jobs</h2>
           <p>
-            Discover the newest job opportunities tailored just for you! Stay ahead with the latest openings and apply before they’re gone!"
+            Discover the newest job opportunities tailored just for you! Stay
+            ahead with the latest openings and apply before they’re gone!"
           </p>
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="jobs-latest">
               <div class="img-thumb">
-                <img
-                  src="./JobXSearch/img-1.jpg"
-                  alt=""
-                />
+                <img src="./JobXSearch/img-1.jpg" alt="" />
               </div>
               <div class="content">
                 <h3>
-                  <a
-                    href="./job-details.html"
-                    >UX Designer</a
-                  >
+                  <a href="./job-details.html">UX Designer</a>
                 </h3>
                 <p class="brand">MagNews</p>
                 <div class="tags">
@@ -805,17 +795,11 @@
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="jobs-latest">
               <div class="img-thumb">
-                <img
-                  src="./JobXSearh/img-2.jpg"
-                  alt=""
-                />
+                <img src="./JobXSearh/img-2.jpg" alt="" />
               </div>
               <div class="content">
                 <h3>
-                  <a
-                    href="./job-details.html"
-                    >UI Designer</a
-                  >
+                  <a href="./job-details.html">UI Designer</a>
                 </h3>
                 <p class="brand">Hunter Inc.</p>
                 <div class="tags">
@@ -832,17 +816,11 @@
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="jobs-latest">
               <div class="img-thumb">
-                <img
-                  src="./JobXSearch/img-3.jpg"
-                  alt=""
-                />
+                <img src="./JobXSearch/img-3.jpg" alt="" />
               </div>
               <div class="content">
                 <h3>
-                  <a
-                    href="./job-details.html"
-                    >Web Developer</a
-                  >
+                  <a href="./job-details.html">Web Developer</a>
                 </h3>
                 <p class="brand">MagNews</p>
                 <div class="tags">
@@ -859,17 +837,11 @@
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="jobs-latest">
               <div class="img-thumb">
-                <img
-                  src="./JobXSearch/img-4.jpg"
-                  alt=""
-                />
+                <img src="./JobXSearch/img-4.jpg" alt="" />
               </div>
               <div class="content">
                 <h3>
-                  <a
-                    href="./job-details.html"
-                    >UX Designer</a
-                  >
+                  <a href="./job-details.html">UX Designer</a>
                 </h3>
                 <p class="brand">AmazeSoft</p>
                 <div class="tags">
@@ -886,17 +858,11 @@
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="jobs-latest">
               <div class="img-thumb">
-                <img
-                  src="./JobXSearch/img-2.jpg"
-                  alt=""
-                />
+                <img src="./JobXSearch/img-2.jpg" alt="" />
               </div>
               <div class="content">
                 <h3>
-                  <a
-                    href="./job-details.html"
-                    >Digital Marketer</a
-                  >
+                  <a href="./job-details.html">Digital Marketer</a>
                 </h3>
                 <p class="brand">Bingo</p>
                 <div class="tags">
@@ -913,17 +879,11 @@
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="jobs-latest">
               <div class="img-thumb">
-                <img
-                  src="./JobXSearch/img-1.jpg"
-                  alt=""
-                />
+                <img src="./JobXSearch/img-1.jpg" alt="" />
               </div>
               <div class="content">
                 <h3>
-                  <a
-                    href="./job-details.html"
-                    >Web Developer</a
-                  >
+                  <a href="./job-details.html">Web Developer</a>
                 </h3>
                 <p class="brand">MagNews</p>
                 <div class="tags">
@@ -938,11 +898,7 @@
             </div>
           </div>
           <div class="col-12 text-center mt-4">
-            <a
-              href="./job-page.html"
-              class="btn btn-common"
-              >Browse All Jobs</a
-            >
+            <a href="./job-page.html" class="btn btn-common">Browse All Jobs</a>
           </div>
         </div>
       </div>
@@ -955,7 +911,8 @@
         <div class="section-header">
           <h2 class="section-title">Clients Review</h2>
           <p>
-            "This platform made job hunting effortless! I found my dream job within days—highly recommended!"
+            "This platform made job hunting effortless! I found my dream job
+            within days—highly recommended!"
           </p>
         </div>
         <div class="row justify-content-center">
@@ -981,22 +938,19 @@
                       <div class="testimonial-item">
                         <div class="author">
                           <div class="img-thumb">
-                            <img
-                              src="./JobXSearch/img2(1).png"
-                              alt=""
-                            />
+                            <img src="./JobXSearch/img2(1).png" alt="" />
                           </div>
                         </div>
                         <div class="content-inner">
                           <p class="description">
-                            "I had been searching for a job for months with no luck, but this platform changed everything! Within a week of signing up, I landed multiple interviews and finally secured my dream job. Highly recommended!" 
+                            "I had been searching for a job for months with no
+                            luck, but this platform changed everything! Within a
+                            week of signing up, I landed multiple interviews and
+                            finally secured my dream job. Highly recommended!"
                           </p>
                           <div class="author-info">
                             <h2>
-                              <a
-                                href="/index.html#"
-                                >Rohan M</a
-                              >
+                              <a href="/index.html#">Rohan M</a>
                             </h2>
                             <span>Project Menager</span>
                           </div>
@@ -1012,22 +966,20 @@
                       <div class="testimonial-item">
                         <div class="author">
                           <div class="img-thumb">
-                            <img
-                              src="./JobXSearch/img3(1).png"
-                              alt=""
-                            />
+                            <img src="./JobXSearch/img3(1).png" alt="" />
                           </div>
                         </div>
                         <div class="content-inner">
                           <p class="description">
-                            The job application process was incredibly smooth and user-friendly. I loved how I could filter jobs based on my skills and experience, making it easy to find the right fit. The job alerts were a lifesaver!" 
+                            The job application process was incredibly smooth
+                            and user-friendly. I loved how I could filter jobs
+                            based on my skills and experience, making it easy to
+                            find the right fit. The job alerts were a
+                            lifesaver!"
                           </p>
                           <div class="author-info">
                             <h2>
-                              <a
-                                href="/index.html#"
-                                >Priya Singh</a
-                              >
+                              <a href="/index.html#">Priya Singh</a>
                             </h2>
                             <span>Engineer</span>
                           </div>
@@ -1043,22 +995,20 @@
                       <div class="testimonial-item">
                         <div class="author">
                           <div class="img-thumb">
-                            <img
-                              src="./JobXSearch/img1(1).png"
-                              alt=""
-                            />
+                            <img src="./JobXSearch/img1(1).png" alt="" />
                           </div>
                         </div>
                         <div class="content-inner">
                           <p class="description">
-                            "Recruiting has always been a time-consuming process, but this platform made it effortless. From posting jobs to shortlisting candidates, everything was streamlined. We found our ideal hire in record time!" 
+                            "Recruiting has always been a time-consuming
+                            process, but this platform made it effortless. From
+                            posting jobs to shortlisting candidates, everything
+                            was streamlined. We found our ideal hire in record
+                            time!"
                           </p>
                           <div class="author-info">
                             <h2>
-                              <a
-                                href="/index.html#"
-                                >Sneha Dubey</a
-                              >
+                              <a href="/index.html#">Sneha Dubey</a>
                             </h2>
                             <span>Senior Accountant</span>
                           </div>
@@ -1074,22 +1024,19 @@
                       <div class="testimonial-item">
                         <div class="author">
                           <div class="img-thumb">
-                            <img
-                              src="./JobXSearch/img2(1).png"
-                              alt=""
-                            />
+                            <img src="./JobXSearch/img2(1).png" alt="" />
                           </div>
                         </div>
                         <div class="content-inner">
                           <p class="description">
-                            "What sets this platform apart is the career guidance. The resume-building tips and interview preparation resources really boosted my confidence. I secured a job at a top company within two weeks!"
+                            "What sets this platform apart is the career
+                            guidance. The resume-building tips and interview
+                            preparation resources really boosted my confidence.
+                            I secured a job at a top company within two weeks!"
                           </p>
                           <div class="author-info">
                             <h2>
-                              <a
-                                href="/index.html#"
-                                >Akash Tiwari</a
-                              >
+                              <a href="/index.html#">Akash Tiwari</a>
                             </h2>
                             <span>Project Menager</span>
                           </div>
@@ -1105,22 +1052,19 @@
                       <div class="testimonial-item">
                         <div class="author">
                           <div class="img-thumb">
-                            <img
-                              src="./JobXSearch/img3(1).png"
-                              alt=""
-                            />
+                            <img src="./JobXSearch/img3(1).png" alt="" />
                           </div>
                         </div>
                         <div class="content-inner">
                           <p class="description">
-                            "I was skeptical at first, but the AI-powered job recommendations were spot on! It suggested roles that perfectly matched my skills and experience, and I landed an amazing job without the usual hassle."
+                            "I was skeptical at first, but the AI-powered job
+                            recommendations were spot on! It suggested roles
+                            that perfectly matched my skills and experience, and
+                            I landed an amazing job without the usual hassle."
                           </p>
                           <div class="author-info">
                             <h2>
-                              <a
-                                href="/index.html#"
-                                >Neha R</a
-                              >
+                              <a href="/index.html#">Neha R</a>
                             </h2>
                             <span>Engineer</span>
                           </div>
@@ -1136,22 +1080,20 @@
                       <div class="testimonial-item">
                         <div class="author">
                           <div class="img-thumb">
-                            <img
-                              src="./JobXSearch/img1(1).png"
-                              alt=""
-                            />
+                            <img src="./JobXSearch/img1(1).png" alt="" />
                           </div>
                         </div>
                         <div class="content-inner">
                           <p class="description">
-                            "The talent pool here is exceptional. Unlike other portals, we received applications from genuinely skilled candidates, saving us hours of unnecessary screening. This platform is now our go-to for hiring!" 
+                            "The talent pool here is exceptional. Unlike other
+                            portals, we received applications from genuinely
+                            skilled candidates, saving us hours of unnecessary
+                            screening. This platform is now our go-to for
+                            hiring!"
                           </p>
                           <div class="author-info">
                             <h2>
-                              <a
-                                href="/index.html#"
-                                >Anurag Gaur</a
-                              >
+                              <a href="/index.html#">Anurag Gaur</a>
                             </h2>
                             <span>Senior Accountant</span>
                           </div>
@@ -1167,22 +1109,20 @@
                       <div class="testimonial-item">
                         <div class="author">
                           <div class="img-thumb">
-                            <img
-                              src="./JobXSearch/img2(1).png"
-                              alt=""
-                            />
+                            <img src="./JobXSearch/img2(1).png" alt="" />
                           </div>
                         </div>
                         <div class="content-inner">
                           <p class="description">
-                            "The automated candidate matching feature was a game-changer for us. Instead of sorting through hundreds of resumes, we were instantly connected with the right candidates. A must-have platform for recruiters!"
+                            "The automated candidate matching feature was a
+                            game-changer for us. Instead of sorting through
+                            hundreds of resumes, we were instantly connected
+                            with the right candidates. A must-have platform for
+                            recruiters!"
                           </p>
                           <div class="author-info">
                             <h2>
-                              <a
-                                href="/index.html#"
-                                >Manish Rawat</a
-                              >
+                              <a href="/index.html#">Manish Rawat</a>
                             </h2>
                             <span>Project Menager</span>
                           </div>
@@ -1219,7 +1159,8 @@
         <div class="section-header">
           <h2 class="section-title">Pricing Plan</h2>
           <p>
-            "Flexible pricing plans tailored for every need! Choose the perfect plan and start hiring top talent today."
+            "Flexible pricing plans tailored for every need! Choose the perfect
+            plan and start hiring top talent today."
           </p>
         </div>
 
@@ -1241,11 +1182,7 @@
                 <div class="price"><span>$</span>0<span>/Month</span></div>
               </div>
               <div class="plan-button">
-                <a
-                  href="#"
-                  class="btn btn-border"
-                  >Get Started</a
-                >
+                <a href="#" class="btn btn-border">Get Started</a>
               </div>
             </div>
           </div>
@@ -1267,11 +1204,7 @@
                 <div class="price"><span>$</span>20<span>/Month</span></div>
               </div>
               <div class="plan-button">
-                <a
-                  href="#"
-                  class="btn btn-border"
-                  >Get Started</a
-                >
+                <a href="#" class="btn btn-border">Get Started</a>
               </div>
             </div>
           </div>
@@ -1293,11 +1226,7 @@
                 <div class="price"><span>$</span>40<span>/Month</span></div>
               </div>
               <div class="plan-button">
-                <a
-                  href="#"
-                  class="btn btn-border"
-                  >Get Started</a
-                >
+                <a href="#" class="btn btn-border">Get Started</a>
               </div>
             </div>
           </div>
@@ -1305,15 +1234,18 @@
       </div>
     </div>
     <!-- End Pricing Table Section -->
-     <!-- Pop Up over for Pricing table for temporary purpose -->
-     <div class="container mt-5 temp-offer">
+    <!-- Pop Up over for Pricing table for temporary purpose -->
+    <div class="container mt-5 temp-offer">
       <div class="offer-container">
-          <h1 class="offer-heading">🚀 Special Offer: Post Jobs for Free! 🎉</h1>
-          <p class="offer-subtext">For a limited time, post your job openings for FREE and hire the best talent hassle-free.</p>
-          <a href="./post-job.html" class="btn offer-btn">Post a Job Now</a>
+        <h1 class="offer-heading">🚀 Special Offer: Post Jobs for Free! 🎉</h1>
+        <p class="offer-subtext">
+          For a limited time, post your job openings for FREE and hire the best
+          talent hassle-free.
+        </p>
+        <a href="./post-job.html" class="btn offer-btn">Post a Job Now</a>
       </div>
-  </div>
-     <!-- pop over Ends here -->
+    </div>
+    <!-- pop over Ends here -->
 
     <!-- Blog Section -->
     <section id="blog" class="section">
@@ -1332,32 +1264,23 @@
             <!-- Blog Item Starts -->
             <div class="blog-item-wrapper">
               <div class="blog-item-img">
-                <a
-                  href="./single-post.html"
-                >
-                  <img
-                    src="./JobXSearch/img1.jpg"
-                    alt=""
-                  />
+                <a href="./single-post.html">
+                  <img src="./JobXSearch/img1.jpg" alt="" />
                 </a>
               </div>
               <div class="blog-item-text">
                 <h3>
-                  <a
-                    href="./single-post.html"
+                  <a href="./single-post.html"
                     >Tips to write an impressive resume online for beginner</a
                   >
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Labore praesentium asperiores ad vitae.
+                  "Did you know recruiters spend only 7 seconds on a resume? Make every second count—especially if you're just starting out. Here's how beginners can create a resume that grabs attention instantly."
+
+
                 </p>
               </div>
-              <a
-                class="readmore"
-                href="./index.html#"
-                >Read More</a
-              >
+              <a class="readmore" href="./index.html#">Read More</a>
             </div>
             <!-- Blog Item Wrapper Ends-->
           </div>
@@ -1366,32 +1289,21 @@
             <!-- Blog Item Starts -->
             <div class="blog-item-wrapper">
               <div class="blog-item-img">
-                <a
-                  href="./single-post.html"
-                >
-                  <img
-                    src="./JobXSearch/img2.jpg"
-                    alt=""
-                  />
+                <a href="./single-post.html">
+                  <img src="./JobXSearch/img2.jpg" alt="" />
                 </a>
               </div>
               <div class="blog-item-text">
                 <h3>
-                  <a
-                    href="./single-post.html"
+                  <a href="./single-post.html"
                     >Let's explore 5 cool new features in JobBoard theme</a
                   >
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Labore praesentium asperiores ad vitae.
+                  "Looking to level up your job portal or career site? The latest JobBoard theme is packed with fresh, user-friendly features that make hiring and job hunting easier than ever. Let’s explore 5 cool new additions you shouldn’t miss!"
                 </p>
               </div>
-              <a
-                class="readmore"
-                href="./index.html#"
-                >Read More</a
-              >
+              <a class="readmore" href="./index.html#">Read More</a>
             </div>
             <!-- Blog Item Wrapper Ends-->
           </div>
@@ -1400,32 +1312,22 @@
             <!-- Blog Item Starts -->
             <div class="blog-item-wrapper">
               <div class="blog-item-img">
-                <a
-                  href="./single-post.html"
-                >
-                  <img
-                    src="./JobXSearch/img3.jpg"
-                    alt=""
-                  />
+                <a href="./single-post.html">
+                  <img src="./JobXSearch/img3.jpg" alt="" />
                 </a>
               </div>
               <div class="blog-item-text">
                 <h3>
-                  <a
-                    href="./single-post.html"
+                  <a href="./single-post.html"
                     >How to convince recruiters and get your dream job</a
                   >
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Labore praesentium asperiores ad vitae.
+                  "Landing your dream job isn't just about having the right skills—it's about convincing recruiters that you're the one. From resume hacks to interview strategies, here’s how to win their trust and get hired."
+
                 </p>
               </div>
-              <a
-                class="readmore"
-                href="./index.html#"
-                >Read More</a
-              >
+              <a class="readmore" href="./index.html#">Read More</a>
             </div>
             <!-- Blog Item Wrapper Ends-->
           </div>
@@ -1444,22 +1346,15 @@
                 <div class="download-text">
                   <h4>Download Our Best Apps</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    ellentesque dignissim quam et metus effici turac fringilla
-                    lorem facilisis, Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.
+                   Our App will be available very soon if you all trust us and give us all your love and support
                   </p>
                 </div>
                 <div class="app-button">
-                  <a
-                    href="./index.html#"
-                    class="btn btn-border"
+                  <a href="./index.html#" class="btn btn-border"
                     ><i class="lni-apple"></i>Download <br />
                     <span>From App Store</span></a
                   >
-                  <a
-                    href="./index.html#"
-                    class="btn btn-common btn-effect"
+                  <a href="./index.html#" class="btn btn-common btn-effect"
                     ><i class="lni-android"></i> Download <br />
                     <span>From Play Store</span></a
                   >
@@ -1469,11 +1364,7 @@
           </div>
           <div class="col-lg-6 col-md-4 col-xs-12">
             <div class="download-thumb">
-              <img
-                class="img-fluid"
-                src="./JobXSearch/app.png"
-                alt=""
-              />
+              <img class="img-fluid" src="./JobXSearch/app.png" alt="" />
             </div>
           </div>
         </div>
@@ -1492,13 +1383,15 @@
                 <div class="footer-logo">
                   <img
                     src="./JobXSearch/logo.png"
-                    alt="" 
+                    alt=""
                     class="footer-logo-img"
                   />
                 </div>
                 <div class="textwidget">
                   <p>
-                    At JobXSearch (ABCD), we bridge the gap between ambition and success, making job hunting and hiring faster, smarter, and more efficient!" 🚀
+                    At JobXSearch (ABCD), we bridge the gap between ambition and
+                    success, making job hunting and hiring faster, smarter, and
+                    more efficient!" 🚀
                   </p>
                 </div>
               </div>
@@ -1508,46 +1401,30 @@
                 <h3 class="block-title">Quick Links</h3>
                 <ul class="menu">
                   <li>
-                    <a href="./About.html#"
-                      >About Us</a
-                    >
+                    <a href="./About.html#">About Us</a>
                   </li>
                   <li>
-                    <a href="./faq.html#"
-                      >Support</a
-                    >
+                    <a href="./faq.html#">Support</a>
                   </li>
                   <li>
-                    <a href="./index.html#"
-                      >License</a
-                    >
+                    <a href="./index.html#">License</a>
                   </li>
                   <li>
-                    <a href="./Contact.html"
-                      >Contact</a
-                    >
+                    <a href="./Contact.html">Contact</a>
                   </li>
                 </ul>
                 <ul class="menu">
                   <li>
-                    <a href="./privacy.html"
-                      >Terms &amp; Conditions</a
-                    >
+                    <a href="./privacy.html">Terms &amp; Conditions</a>
                   </li>
                   <li>
-                    <a href="./privacy.html"
-                      >Privacy</a
-                    >
+                    <a href="./privacy.html">Privacy</a>
                   </li>
                   <li>
-                    <a href="./privacy.html"
-                      >Refferal Terms</a
-                    >
+                    <a href="./privacy.html">Refferal Terms</a>
                   </li>
                   <li>
-                    <a href="./index.html#"
-                      >Product License</a
-                    >
+                    <a href="./index.html#">Product License</a>
                   </li>
                 </ul>
               </div>
@@ -1555,7 +1432,10 @@
             <div class="col-lg-3 col-md-4 col-xs-12">
               <div class="widget">
                 <h3 class="block-title">Subscribe Now</h3>
-                <p>"We're here to help you succeed—reach out today, and let’s turn your hiring or job search goals into reality!" 🚀</p>
+                <p>
+                  "We're here to help you succeed—reach out today, and let’s
+                  turn your hiring or job search goals into reality!" 🚀
+                </p>
                 <form
                   method="post"
                   id="subscribe-form"
@@ -1578,35 +1458,31 @@
                       id="subscribes"
                       class="btn btn-common sub-btn"
                     >
-                    <i class="lni lni-envelope-1"></i>
+                      <i class="lni lni-envelope-1"></i>
                     </button>
                     <div class="clearfix"></div>
                   </div>
                 </form>
                 <ul class="mt-3 footer-social">
                   <li>
-                    <a
-                      class="facebook"
-                      href="./index.html#"
-                      ><i class="lni lni-facebook"></i></a>
+                    <a class="facebook" href="./index.html#"
+                      ><i class="lni lni-facebook"></i
+                    ></a>
                   </li>
                   <li>
-                    <a
-                      class="twitter"
-                      href="./index.html#"
-                      ><i class="lni lni-twitter-old"></i></a>
+                    <a class="twitter" href="./index.html#"
+                      ><i class="lni lni-twitter-old"></i
+                    ></a>
                   </li>
                   <li>
-                    <a
-                      class="linkedin"
-                      href="./index.html#"
-                      ><i class="lni lni-linkedin"></i></a>
+                    <a class="linkedin" href="./index.html#"
+                      ><i class="lni lni-linkedin"></i
+                    ></a>
                   </li>
                   <li>
-                    <a
-                      class="google-plus"
-                      href="./index.html#"
-                      ><i class="lni lni-google"></i></a>
+                    <a class="google-plus" href="./index.html#"
+                      ><i class="lni lni-google"></i
+                    ></a>
                   </li>
                 </ul>
               </div>
@@ -1616,7 +1492,6 @@
       </section>
       <!-- Footer area End -->
 
-
       <div id="copyright">
         <div class="container">
           <div class="row">
@@ -1624,24 +1499,21 @@
               <div class="site-info text-center">
                 <p>
                   Designed and Developed by
-                  <a href="https://limzedsoftware.com/" rel="nofollow">LIMZED SOFTWARE</a>
+                  <a href="https://limzedsoftware.com/" rel="nofollow"
+                    >LIMZED SOFTWARE</a
+                  >
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </footer>
     <!-- Footer Section End -->
 
     <!-- Go To Top Link -->
-    <a
-      href="index.html#"
-      class="back-to-top"
-      style="display: none"
-    >
-    <i class="lni lni-arrow-upward"></i>
+    <a href="index.html#" class="back-to-top" style="display: none">
+      <i class="lni lni-arrow-upward"></i>
     </a>
 
     <!-- Preloader -->
@@ -1650,13 +1522,12 @@
     </div>
     <!-- End Preloader -->
 
-    
-      
-      
-    
-    
     <!-- Loader Overlay -->
-    <div id="loader" class="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center bg-white" style="z-index: 1050;">
+    <div
+      id="loader"
+      class="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center bg-white"
+      style="z-index: 1050"
+    >
       <div class="loader-bars">
         <div class="loader-bar"></div>
         <div class="loader-bar"></div>
@@ -1664,11 +1535,6 @@
       </div>
       <div class="loader-text">Launching Your Career Hub...</div>
     </div>
-    
-
-    
-
-
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="./JobXSearch/jquery-min.js.download"></script>
@@ -1679,48 +1545,29 @@
         <h3>Color Palette</h3>
         <ul class="colors">
           <li>
-            <a
-              class="color1 active"
-              href="/index.html#"
-            ></a>
+            <a class="color1 active" href="/index.html#"></a>
           </li>
           <li>
-            <a
-              class="color2"
-              href="/index.html#"
-            ></a>
+            <a class="color2" href="/index.html#"></a>
           </li>
           <li>
-            <a
-              class="color3"
-              href="/index.html#"
-            ></a>
+            <a class="color3" href="/index.html#"></a>
           </li>
           <li>
-            <a
-              class="color4"
-              href="/index.html#"
-            ></a>
+            <a class="color4" href="/index.html#"></a>
           </li>
           <li>
-            <a
-              class="color5"
-              href="/index.html#"
-            ></a>
+            <a class="color5" href="/index.html#"></a>
           </li>
           <li>
-            <a
-              class="color6"
-              href="/index.html#"
-            ></a>
+            <a class="color6" href="/index.html#"></a>
           </li>
         </ul>
       </div>
       <div class="bottom">
-        <a
-          href="/index.html#"
-          class="settings"
-          ><i class="lni lni-colour-palette-3"></i></a>
+        <a href="/index.html#" class="settings"
+          ><i class="lni lni-colour-palette-3"></i
+        ></a>
       </div>
     </div>
     <script src="./JobXSearch/owl.carousel.min.js.download"></script>
@@ -1734,83 +1581,89 @@
     <script src="./JobXSearch/form-validator.min.js"></script>
     <script src="./JobXSearch/color-switcher.js"></script>
     <script src="./JobXSearch/contact-form-script.js"></script>
-   <!-- jQuery (required by Bootstrap 4) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery (required by Bootstrap 4) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Popper.js (for dropdowns) -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Popper.js (for dropdowns) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-<!-- Bootstrap 4 JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap 4 JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-       window.addEventListener("load", function() {
+      window.addEventListener("load", function () {
         document.body.classList.add("loaded");
       });
       const handleLocationChange = () => {
         const select = document.getElementById("locationSelect");
         const selectedValue = select.value;
-    
+
         if (selectedValue === "access") {
           if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+            navigator.geolocation.getCurrentPosition(
+              successCallback,
+              errorCallback
+            );
           } else {
             alert("Geolocation is not supported by your browser.");
           }
         }
       };
-    
+
       const successCallback = (position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        const apiKey = '357bfac5c626489fbc5731e185b27a19'; // Replace this with your OpenCage API key
-    
+        const apiKey = "357bfac5c626489fbc5731e185b27a19"; // Replace this with your OpenCage API key
+
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
-    
+
         fetch(apiUrl)
-          .then(response => response.json())
-          .then(data => {
+          .then((response) => response.json())
+          .then((data) => {
             if (data.results.length > 0) {
-              const location = data.results[0].components.city || 
-                               data.results[0].components.town || 
-                               data.results[0].components.village || 
-                               data.results[0].components.state || 
-                               "Unknown Location";
-    
+              const location =
+                data.results[0].components.city ||
+                data.results[0].components.town ||
+                data.results[0].components.village ||
+                data.results[0].components.state ||
+                "Unknown Location";
+
               const select = document.getElementById("locationSelect");
-    
+
               // Check if the detected location is already an option
               let found = false;
               for (let i = 0; i < select.options.length; i++) {
-                if (select.options[i].value.toLowerCase() === location.toLowerCase()) {
+                if (
+                  select.options[i].value.toLowerCase() ===
+                  location.toLowerCase()
+                ) {
                   select.selectedIndex = i;
                   found = true;
                   break;
                 }
               }
-    
+
               // If not found — add it as a new option and select it
               if (!found) {
                 const newOption = new Option(location, location, true, true);
                 select.add(newOption, select.options.length - 1); // Add before 'Access my Location'
               }
-    
             } else {
               alert("Could not detect your exact location.");
             }
           })
-          .catch(error => {
+          .catch((error) => {
             console.error(error);
             alert("Error fetching location details.");
           });
       };
-    
+
       const errorCallback = (error) => {
         console.error(error);
         alert("Unable to access your location.");
       };
     </script>
     <!-- Lottie Player Script -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </body>
 </html>

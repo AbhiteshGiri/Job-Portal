@@ -61,6 +61,9 @@ app.get("/index2",all.allProtect,(req, res) => {
   app.get('/dashboard',(req,res)=>{
     res.sendFile(path.join(__dirname,'./Public','dashboard.html'));
   });
+  app.get('/post-job',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'post-job.html'));
+  });
 app.listen(process.env.PORT,()=>{
     console.log("App is running on 3000")
 })
