@@ -8,9 +8,9 @@ const {
   getJobs,
   deleteJob,
   getApplications,editUsers,ChangeStatus,deleteApplicant
-} = require('../Controllers/AdminController');
+} = require('../Controllers/adminController');
 
-const adminProtect = require('../Middlewares/adminProtect');
+const adminProtect = require('../Middlewares/adminprotect');
 
 router.get('/users', adminProtect, getUsers);
 router.put('/users', adminProtect, editUsers);
