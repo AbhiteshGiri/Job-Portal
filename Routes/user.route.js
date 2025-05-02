@@ -1,5 +1,5 @@
 const express = require('express');
-const {  createJob, updateJob, deleteJob } = require('../Controllers/JobController');
+const {  createJob, updateJob, deleteJob } = require('../Controllers/jobcontroller');
 const { protect, employerProtect } = require('../Middlewares/authMiddleware');
 const upload = require("../Middlewares/uploadMiddlewares")
 const router = express.Router();
