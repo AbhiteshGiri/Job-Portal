@@ -2,7 +2,7 @@ const express = require('express');
 const {  createJob, updateJob, deleteJob,getApplicant } = require('../Controllers/jobcontroller');
 const {  employerProtect } = require('../Middlewares/authMiddleware');
 const upload = require("../Middlewares/uploadMiddlewares")
-const {ChangeStatus}=require('../Controllers/AdminController')
+const {ChangeStatus}=require('../Controllers/adminController')
 const router = express.Router();
 const job= require('../Models/job.model')
 
