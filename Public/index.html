@@ -84,6 +84,61 @@
       .flicker-effect {
         animation: flicker 2s infinite;
       }
+
+      .free-job-posting-banner {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin: 10% 0 20px;
+        padding: 15px 25px;
+        max-width: 90%;
+        color: #fff;
+        background: linear-gradient(135deg, #00b894, #0984e3);
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        animation: pulse 2s infinite ease-in-out, flicker 3s infinite;
+        transition: transform 0.3s;
+      }
+
+      .free-job-posting-banner span {
+        color: #ffeaa7;
+        text-shadow: 0 0 5px #fdcb6e;
+        font-weight: 700;
+      }
+
+      .free-job-posting-banner:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 10px #00cec9;
+        }
+        50% {
+          box-shadow: 0 0 20px #00cec9;
+        }
+      }
+
+      @keyframes flicker {
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
+          opacity: 1;
+        }
+        20%,
+        22%,
+        24%,
+        55% {
+          opacity: 0.4;
+        }
+      }
     </style>
   </head>
 
@@ -288,8 +343,13 @@
         <div class="mobile-menu" data-logo="/JobXSearch/logo.png"></div>
       </nav>
       <!-- Navbar End -->
+      
 
       <div class="container">
+        <!-- Free Job Posting Banner -->
+      <div class="free-job-posting-banner">
+        🚀 Posting a Job is <span>Absolutely FREE!</span> Start hiring now.
+      </div>
         <div class="row space-100 justify-content-center">
           <div class="col-lg-10 col-md-12 col-xs-12">
             <div class="contents">
@@ -373,45 +433,7 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Floating Job Free Posting Card -->
-    <div
-      class="job-posting-float-card position-fixed flicker-effect"
-      style="bottom: 20px; right: 20px; z-index: 999"
-    >
-      <div
-        class="card shadow-lg border-0 flicker-effect"
-        style="
-          width: 260px;
-          background: linear-gradient(135deg, #ff7e5f, #feb47b);
-          color: white;
-          border-radius: 20px;
-          overflow: hidden;
-        "
-      >
-        <div class="card-body text-center p-3">
-          <!-- 3D Animation -->
-          <div class="lottie-container mb-2" style="height: 80px">
-            <lottie-player
-              src="https://assets1.lottiefiles.com/packages/lf20_puciaact.json"
-              background="transparent"
-              speed="1"
-              style="width: 100%; height: 100%"
-              loop
-              autoplay
-            ></lottie-player>
-          </div>
-          <!-- Text -->
-          <h6 class="card-title fw-bold mb-1">Unlimited Jobs</h6>
-          <p class="card-text small">Post your jobs absolutely FREE!</p>
-          <a
-            href="./post-job.html"
-            class="btn btn-light btn-sm fw-bold mt-2 custom-hover-button flicker-effect"
-            >Post Now in Free🚀</a
-          >
-        </div>
-      </div>
-    </div>
-    <!-- End Free Section -->
+    
     <!-- Category Section Start -->
     <section class="category section bg-gray">
       <div class="container">
@@ -1275,9 +1297,10 @@
                   >
                 </h3>
                 <p>
-                  "Did you know recruiters spend only 7 seconds on a resume? Make every second count—especially if you're just starting out. Here's how beginners can create a resume that grabs attention instantly."
-
-
+                  "Did you know recruiters spend only 7 seconds on a resume?
+                  Make every second count—especially if you're just starting
+                  out. Here's how beginners can create a resume that grabs
+                  attention instantly."
                 </p>
               </div>
               <a class="readmore" href="./index.html#">Read More</a>
@@ -1300,7 +1323,10 @@
                   >
                 </h3>
                 <p>
-                  "Looking to level up your job portal or career site? The latest JobBoard theme is packed with fresh, user-friendly features that make hiring and job hunting easier than ever. Let’s explore 5 cool new additions you shouldn’t miss!"
+                  "Looking to level up your job portal or career site? The
+                  latest JobBoard theme is packed with fresh, user-friendly
+                  features that make hiring and job hunting easier than ever.
+                  Let’s explore 5 cool new additions you shouldn’t miss!"
                 </p>
               </div>
               <a class="readmore" href="./index.html#">Read More</a>
@@ -1323,8 +1349,10 @@
                   >
                 </h3>
                 <p>
-                  "Landing your dream job isn't just about having the right skills—it's about convincing recruiters that you're the one. From resume hacks to interview strategies, here’s how to win their trust and get hired."
-
+                  "Landing your dream job isn't just about having the right
+                  skills—it's about convincing recruiters that you're the one.
+                  From resume hacks to interview strategies, here’s how to win
+                  their trust and get hired."
                 </p>
               </div>
               <a class="readmore" href="./index.html#">Read More</a>
@@ -1346,7 +1374,8 @@
                 <div class="download-text">
                   <h4>Download Our Best Apps</h4>
                   <p>
-                   Our App will be available very soon if you all trust us and give us all your love and support
+                    Our App will be available very soon if you all trust us and
+                    give us all your love and support
                   </p>
                 </div>
                 <div class="app-button">
