@@ -42,6 +42,7 @@ app.get("/login", (req, res) => {
 app.get("/Login", (req, res) => {
   res.sendFile(path.join(__dirname, "./Public", "Login.html"));
 });
+
 app.get("/index2",all.allProtect,(req, res) => {
     res.sendFile(path.join(__dirname, "./Public", "index2.html"));
 });
@@ -64,6 +65,16 @@ app.get("/index2",all.allProtect,(req, res) => {
   app.get('/post-job',all.employerProtect,(req,res)=>{
     res.sendFile(path.join(__dirname, './Public', 'post-job.html'));
   });
+  app.get('/logout', (req, res) => {
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: true, 
+      sameSite: 'Strict'
+    });
+    res.status(200).json({ message: 'Logged out successfully' });
+  });
+
+
 app.listen(process.env.PORT,()=>{
     console.log("App is running on 3000")
 })

@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="./post-job_files/main.css" />
     <link rel="stylesheet" href="./post-job_files/responsive.css" />
     <link rel="stylesheet" href="./JobXSearch/main.css" />
-    <link rel="icon" href="./JobXSearch/logo.png">
+    <link rel="icon" href="./JobXSearch/logo.png" />
     <link
       rel="stylesheet"
       id="colors"
@@ -231,7 +231,7 @@
                   <a class="nav-link" href="/contact.html"> Contact </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/index.html">Logout</a>
+                  <a class="nav-link" id="Logout" href="#">Logout</a>
                 </li>
                 <li class="button-group">
                   <a href="/post-job.html" class="button btn btn-common"
@@ -653,21 +653,41 @@
               <form class="form-ad" enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="control-label">Job Title</label>
-                  <input type="text" name="title" class="form-control" placeholder="Write job title" />
+                  <input
+                    type="text"
+                    name="title"
+                    class="form-control"
+                    placeholder="Write job title"
+                  />
                 </div>
                 <div class="form-group">
                   <label class="control-label">Company</label>
-                  <input type="text" name="company" class="form-control" placeholder="Write company name" />
+                  <input
+                    type="text"
+                    name="company"
+                    class="form-control"
+                    placeholder="Write company name"
+                  />
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Location <span>(optional)</span></label>
-                  <input type="text" name="location" class="form-control" placeholder="e.g. London" />
+                  <label class="control-label"
+                    >Location <span>(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    name="location"
+                    class="form-control"
+                    placeholder="e.g. London"
+                  />
                 </div>
                 <div class="form-group">
                   <label class="control-label">Category</label>
                   <div class="search-category-container">
                     <label class="styled-select">
-                      <select name="category" class="dropdown-product selectpicker">
+                      <select
+                        name="category"
+                        class="dropdown-product selectpicker"
+                      >
                         <option>All Categories</option>
                         <option>Others</option>
                         <option>IT &amp; Engineering</option>
@@ -682,55 +702,111 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Job Tags <span>(optional)</span></label>
-                  <input type="text" name="tags" class="form-control" placeholder="e.g. PHP, Social Media, Management" />
+                  <label class="control-label"
+                    >Job Tags <span>(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    name="tags"
+                    class="form-control"
+                    placeholder="e.g. PHP, Social Media, Management"
+                  />
                   <p class="note">Comma separate tags for this job.</p>
                 </div>
                 <section id="editor">
                   <div class="form-group">
                     <label for="comment">Description</label>
-                    <textarea class="form-control" name="description" rows="5" id="comment"></textarea>
+                    <textarea
+                      class="form-control"
+                      name="description"
+                      rows="5"
+                      id="comment"
+                    ></textarea>
                   </div>
                 </section>
                 <div class="form-group">
                   <label class="control-label">Application Email / URL</label>
-                  <input type="text" name="applicationUrl" class="form-control" placeholder="Enter email or website URL" />
+                  <input
+                    type="text"
+                    name="applicationUrl"
+                    class="form-control"
+                    placeholder="Enter email or website URL"
+                  />
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Closing Date <span>(optional)</span></label>
+                  <label class="control-label"
+                    >Closing Date <span>(optional)</span></label
+                  >
                   <input type="date" name="closingDate" class="form-control" />
                 </div>
-              
+
                 <div class="divider">
                   <h3 class="job-title">Company Details</h3>
                 </div>
-              
+
                 <div class="form-group">
                   <label class="control-label">Company Name</label>
-                  <input type="text" name="companyName" class="form-control" placeholder="Enter the name of the company" />
+                  <input
+                    type="text"
+                    name="companyName"
+                    class="form-control"
+                    placeholder="Enter the name of the company"
+                  />
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Website <span>(optional)</span></label>
-                  <input type="text" name="website" class="form-control" placeholder="http://" />
+                  <label class="control-label"
+                    >Website <span>(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    name="website"
+                    class="form-control"
+                    placeholder="http://"
+                  />
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Tagline <span>(optional)</span></label>
-                  <input type="text" name="tagline" class="form-control" placeholder="Briefly describe your company" />
+                  <label class="control-label"
+                    >Tagline <span>(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    name="tagline"
+                    class="form-control"
+                    placeholder="Briefly describe your company"
+                  />
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Company Logo <span>(Important)</span></label>
-                  <input type="file" name="companyLogo" class="form-control" accept="image/*" />
+                  <label class="control-label"
+                    >Company Logo <span>(Important)</span></label
+                  >
+                  <input
+                    type="file"
+                    name="companyLogo"
+                    class="form-control"
+                    accept="image/*"
+                  />
                 </div>
                 <div class="custom-file mb-3">
-                  <input type="file" name="jobDescriptionFile" class="custom-file-input" id="validatedCustomFile" />
-                  <label class="custom-file-label form-control" for="validatedCustomFile">Choose File for Job Description</label>
-                  <div class="invalid-feedback">Example invalid custom file feedback</div>
+                  <input
+                    type="file"
+                    name="jobDescriptionFile"
+                    class="custom-file-input"
+                    id="validatedCustomFile"
+                  />
+                  <label
+                    class="custom-file-label form-control"
+                    for="validatedCustomFile"
+                    >Choose File for Job Description</label
+                  >
+                  <div class="invalid-feedback">
+                    Example invalid custom file feedback
+                  </div>
                 </div>
-              
-                
-                <button type="submit" class="btn btn-common">Submit your job</button>
+
+                <button type="submit" class="btn btn-common">
+                  Submit your job
+                </button>
               </form>
-              
             </div>
           </div>
         </div>
@@ -930,44 +1006,56 @@
     <script src="./post-job_files/contact-form-script.js.download"></script>
     <script src="./post-job_files/main.js.download"></script>
     <script>
-   
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelector('.form-ad').addEventListener('submit', async function (e) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          const form = e.target;
-          const formData = new FormData(form);
-    
-          try {
-            const response = await fetch('/job/create', {
-              method: 'POST',
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
-              },
-              body: formData
-            });
-    
-            const result = await response.json();
-            console.log('Backend Response:', result);
-    
-            if (response.ok) {
-              alert('✅ Job posted successfully!');
-            } 
-            else {
-              alert('❌ ' + (result.message || 'Something went wrong.'));
-              if (response.status === 401 || response.status === 403) {
-                setTimeout(() => {
-                  window.location.href = "/Login";
-                }, 1000);
+        document
+          .querySelector(".form-ad")
+          .addEventListener("submit", async function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            try {
+              const response = await fetch("/job/create", {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                body: formData,
+              });
+
+              const result = await response.json();
+              console.log("Backend Response:", result);
+
+              if (response.ok) {
+                alert("✅ Job posted successfully!");
+              } else {
+                alert("❌ " + (result.message || "Something went wrong."));
+                if (response.status === 401 || response.status === 403) {
+                  setTimeout(() => {
+                    window.location.href = "/Login";
+                  }, 1000);
+                }
               }
+            } catch (error) {
+              console.error("Network Error:", error);
+              alert("⚠ Network error. Please try again later.");
             }
-    
-          } catch (error) {
-            console.error('Network Error:', error);
-            alert('⚠ Network error. Please try again later.');
-          }
-        });
+          });
       });
-    </script>    
-  </body>
+      document.getElementById("Logout").addEventListener("click", async (e) => {
+        localStorage.removeItem("token");
+        await fetch("/logout", {
+          method: "GET",
+          credentials: "include",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            window.location.href = "/login";
+          })
+          .catch((err) => console.error("Logout error:", err));
+      });
+    </script>
+      
+  </body>
 </html>

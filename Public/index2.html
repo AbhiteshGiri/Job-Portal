@@ -238,7 +238,7 @@
                   <a class="nav-link" href="./contact.html"> Contact </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./index.html">Logout</a>
+                  <a class="nav-link" id="Logout" href="#">Logout</a>
                 </li>
                 <li class="button-group">
                   <a href="./post-job.html" class="button btn btn-common"
@@ -1560,6 +1560,18 @@
         console.error(error);
         alert("Unable to access your location.");
       };
+      document.getElementById("Logout").addEventListener("click", async (e) => {
+        localStorage.removeItem("token");
+        await fetch("/logout", {
+          method: "GET",
+          credentials: "include",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            window.location.href = "/login";
+          })
+          .catch((err) => console.error("Logout error:", err));
+      });
     </script>
   </body>
 </html>
