@@ -4591,6 +4591,26 @@ footer .menu li .small-title {
   top: 650vh;
 }
 }
+
+@media screen and (max-width: 768px) {
+  .offer-container {
+    top: 1050vh; /* Adjust position for smaller screens */
+    padding: 30px 15px; /* Adjust padding for smaller devices */
+  }
+}
+@media screen and (max-width: px) {
+  .offer-container {
+    top: 1050vh; /* Adjust position for smaller screens */
+    padding: 30px 15px; /* Adjust padding for smaller devices */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .offer-container {
+    top: 1900vh; /* Adjust position even further for very small screens */
+    padding: 20px 10px; /* Adjust padding for very small devices */
+  }
+}
 /* register page css */
 .nav-tabs .nav-link.active {
   color: #00BCD4!important; /* Keep text color white for active tab */
