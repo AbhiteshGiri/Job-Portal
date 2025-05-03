@@ -55,36 +55,42 @@ const protect = async (req, res, next) => {
 
 const employerProtect = async (req, res, next) => {
   try {
+    const admintoken = req.cookies.token;
     const token = req.headers.authorization?.split(' ')[1];
-    const admintoken=req.cookies.token
-    
-    
-    if (!token || !admintoken) return res.status(401).json({ message: "No token provided" });
-if(admintoken){
-  const admindecoded = jwt.verify(admintoken, process.env.JWT_SECRET);
-  console.log(admindecoded)
- if(admindecoded.role=="admin"){
-  req.role="admin"
-  req.id=admindecoded.id;
- return next();
- }
-}
-  else{
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const employer = await Employer.findById(decoded.id);
-    
-    if (!employer) return res.status(401).json({ message: "Invalid employer token" });
 
-    req.employer = employer;
- return    next();
-  }
-    
-   
+    if (admintoken) {
+      const admindecoded = jwt.verify(admintoken, process.env.JWT_SECRET);
+      if (admindecoded.role === "admin") {
+        req.role = "admin";
+        req.id = admindecoded.id;
+        return next();
+      }
+    }
+
+    if (token) {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const employer = await Employer.findById(decoded.id);
+      if (!employer) {
+        return res.status(403).json({ message: "Unauthorized access: Only Recruiter Can Post A Job" });
+      }
+      req.employer = employer;
+      return next();
+    }
+
+    // If neither token is valid
+    return res.status(401).json({ message: "You Should Login As Recruiter To Post the Job" });
+
   } catch (err) {
-    console.log(err)
-    return res.status(401).json({ message: "Not authorized, token failed anuj", error: err.message });
-  }
+    console.error("Middleware error:", err);
+    return res.status(401).json({
+      message: "Invalid User: Something went wrong with credentials",
+      error: err.message
+    });
+  }
 };
+
+
+
 const allProtect = async (req, res, next) => {
   let token = req.cookies.token
   console.log(token); 
