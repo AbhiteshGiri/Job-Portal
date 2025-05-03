@@ -2,14 +2,10 @@ const multer = require('multer');
 const path = require('path');
 
 // Set Storage Engine
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/resume'); // Directory where resumes will be stored
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); // Unique filename
-    }
-});
+const { storage } = require('../Config/cloudinary'); // adjust path if needed
+
+const upload = multer({ storage });
+
 
 // File Filter to accept only PDF or DOCX
 // const fileFilter = (req, file, cb) => {
@@ -25,10 +21,6 @@ const storage = multer.diskStorage({
 // };
 
 // Multer Upload Middleware
-const upload = multer({
-    storage: storage,
-    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-    // fileFilter: fileFilter
-});
+
 
 module.exports = upload;
