@@ -4213,7 +4213,7 @@ footer .footer-Content p {
   
 }
 .footer-logo-img{
-  height: 10vh;
+  height: 5vh;
   width:auto;
 }
 
@@ -4501,7 +4501,22 @@ footer .menu li .small-title {
   background-color: #ff5722;
   color: white;
 }
-
+@media (max-width: 600px) {
+  .offer-container{
+  top: 1750vh;
+}
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .offer-container{
+    top: 655vh;
+  }
+}
+@media (min-width: 1000px) {
+  .offer-container{
+    top: 490vh;
+  }
+  
+}
 /* register page css */
 .nav-tabs .nav-link.active {
   color: #00BCD4!important; /* Keep text color white for active tab */
@@ -4578,8 +4593,11 @@ footer .menu li .small-title {
             transform: translateY(-30px) rotateX(360deg) rotateY(360deg);
           }
         }
-    
 
+
+.slicknav_brand img{
+  height: 10vh;
+}
 
 /* .temp-offer{
   position: absolute;
