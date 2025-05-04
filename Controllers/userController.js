@@ -6,6 +6,7 @@ const fs = require('fs');
 const Application=require('../Models/Application.model.js');
 const sendEmail = require("../Utils/sendemail");
 const sendEmailWithAttachment=require('../Utils/sendEmailWithAttachment.js');
+const sendEmailAdmin=require('../Utils/sendEmailAdmin.js');
 // Get User Profile
 const getUserProfile = async (req, res) => {
     try {
@@ -225,4 +226,23 @@ const applyjob = async (req, res) => {
       res.status(500).json({ success: false, message: err.message });
     }
   };
-module.exports = { getUserProfile, updateUserProfile, saveJob, getSavedJobs , deleteUserResume,applyjob,getUserResumes,getLatestJobsByAppliedTitles};
+  const sendEmailContact = async (req, res) => {
+    try {
+      const { name, email, message, subject } = req.body;
+      const file = req.file;
+  
+      if (!file) {
+        return res.status(400).json({ message: 'Attachment is required' });
+      }
+  
+      await sendEmailAdmin(name, email, message, subject, file);
+  
+      res.status(200).json({ message: 'Email sent successfully' });
+    } catch (error) {
+      console.error('Email sending error:', error);
+      res.status(500).json({ message: 'Failed to send email', error });
+    }
+  };
+  
+  
+module.exports = { getUserProfile, updateUserProfile, saveJob, getSavedJobs , deleteUserResume,applyjob,getUserResumes,getLatestJobsByAppliedTitles,sendEmailContact};

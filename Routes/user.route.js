@@ -4,9 +4,12 @@ const { protect, employerProtect } = require('../Middlewares/authMiddleware');
 const upload = require("../Middlewares/uploadMiddlewares")
 const router = express.Router();
 const job= require('../Models/job.model')
-const {applyjob,getUserResumes,getLatestJobsByAppliedTitles}=require('../Controllers/userController')
+const {applyjob,getUserResumes,getLatestJobsByAppliedTitles,sendEmailContact}=require('../Controllers/userController')
 const ApplicationModel=require('../Models/Application.model');
 const mongoose=require('mongoose')
+const multer= require('multer')
+const storage=multer.memoryStorage();
+const uploader = multer({ storage: storage });
 // router.get('/', getJobs);
 // router.get('/:id', getJobById);
 router.post('/create', employerProtect, upload.fields([{ name: 'companyLogo', maxCount: 1 }, { name: 'jobDescriptionFile', maxCount: 1 }]),createJob);
@@ -74,4 +77,7 @@ router.get("/jobs", async (req, res) => {
       res.status(500).json({ message: "Server error" });
     }
   });
+
+
+router.post('/contactUS', uploader.single('attachment'), sendEmailContact)
 module.exports = router;

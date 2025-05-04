@@ -42,6 +42,103 @@ const emailStyles = `
       color: #888;
       text-align: center;
     }
+      @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+
+    .email-container {
+      max-width: 650px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #00bcd4, #2196f3);
+      color: #fff;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .content {
+      padding: 30px 25px;
+      color: #333;
+      background: #f8fbff;
+    }
+
+    .content p {
+      margin: 15px 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .info-box {
+      background-color: #ffffff;
+      border-left: 5px solid #2196f3;
+      padding: 18px;
+      margin: 25px 0;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(33, 150, 243, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .info-box:hover {
+      transform: scale(1.02);
+    }
+
+    .info-box strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #0d47a1;
+    }
+
+    .footer {
+      background-color: #e3f2fd;
+      text-align: center;
+      padding: 20px 25px;
+      font-size: 14px;
+      color: #555;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer a {
+      color: #1976d2;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 650px) {
+      .email-container {
+        margin: 20px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+    }
   </style>
 `;
 
@@ -142,3 +239,37 @@ exports.adminLoginNotificationEmail = (username, time, deviceInfo) => {
     </div>
   `;
 };
+
+exports.sendContactEmail=(name,email,file,message,subject)=>{
+return `
+${emailStyles}
+  <div class="email-container">
+  <div class="header">
+    <h1>New Contact Inquiry 📬</h1>
+  </div>
+
+  <div class="content">
+    <p>Hello Admin,</p>
+    <p>You have received a new contact request from ${email}:</p>
+
+    <div class="info-box">
+      <strong>Name:</strong> ${name}<br>
+      <strong>Email:</strong> ${email}<br>
+      <strong>Subject:</strong> ${subject}<br>
+      <strong>Message:</strong>
+      ${message}
+    </div>
+
+    ${file ? `<p><strong>Attachment:</strong> <a href="cid:${file.filename}">Download</a></p>` : ''}
+
+    <p>Please respond as soon as possible.</p>
+  </div>
+
+  <div class="footer">
+    © 2025 Your Job Portal. All rights reserved.<br>
+    Need help? <a href="mailto:support@yourjobportal.com">Contact Support</a>
+  </div>
+</div>
+
+`;
+}

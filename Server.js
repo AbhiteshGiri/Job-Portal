@@ -74,7 +74,9 @@ app.get("/index2",all.allProtect,(req, res) => {
     res.status(200).json({ message: 'Logged out successfully' });
   });
 
-
+app.get('/contact',(req,res)=>{
+  res.sendFile(path.join(__dirname, './Public', 'contact.html'));
+})
 app.listen(process.env.PORT,()=>{
     console.log("App is running on 3000")
 })
