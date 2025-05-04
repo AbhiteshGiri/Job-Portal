@@ -14,6 +14,7 @@ const cookieParser=require("cookie-parser");
 const adminRouter=require("./Routes/Admin.router");
 const useragent = require('express-useragent');
 const employer= require('./Routes/employer.route')
+
 app.use(useragent.express());
 // middlewares 
 app.use(express.json())
@@ -30,6 +31,7 @@ app.use('/admin',adminRouter)
 app.use('/employer',employer)
 app.use(express.static((path.join(__dirname,'./Public'))));
 app.use('/uploads/resume', express.static(path.join(__dirname, 'uploads/resume')));
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "./Public", "index.html"));
 });
@@ -80,4 +82,3 @@ app.get('/contact',(req,res)=>{
 app.listen(process.env.PORT,()=>{
     console.log("App is running on 3000")
 })
-
