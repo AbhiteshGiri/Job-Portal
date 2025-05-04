@@ -75,7 +75,7 @@ app.get("/index2",all.allProtect,(req, res) => {
   });
 
 app.get('/contact',(req,res)=>{
-  res.sendFile(path.join(__dirname, './Public', 'contact.html'));
+  res.sendFile(path.join(__dirname, './Public', 'Contact.html'));
 })
 app.listen(process.env.PORT,()=>{
     console.log("App is running on 3000")
