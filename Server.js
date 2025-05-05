@@ -86,7 +86,7 @@ app.get("/index2",all.allProtect,(req, res) => {
     res.sendFile(path.join(__dirname, './Public', 'faq.html'));
   });
   app.get('/job-alerts',(req,res)=>{
-    res.sendFile(path.join(__dirname, './Public', 'job-alerts.html'));
+    res.sendFile(path.join(__dirname, './Public', 'Job-alerts.html'));
   });
   app.get('/job-page',(req,res)=>{
     res.sendFile(path.join(__dirname, './Public', 'job-page.html'));
