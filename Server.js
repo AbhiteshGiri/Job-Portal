@@ -79,6 +79,30 @@ app.get("/index2",all.allProtect,(req, res) => {
   app.get('/employerlogin',(req,res)=>{
     res.sendFile(path.join(__dirname, './Public', 'employerLogin.html'));
   });
+  app.get('/browse-categories',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'browse-categories.html'));
+  });
+  app.get('/faq',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'faq.html'));
+  });
+  app.get('job-alerts',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'job-alerts.html'));
+  });
+  app.get('/job-page',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'job-page.html'));
+  });
+  app.get('/manage-application',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'manage-application.html'));
+  });
+  app.get('/notification',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'notification.html'));
+  });
+  app.get('/employerlogin',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'employerLogin.html'));
+  });
+  app.get('/privacy',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'privacy.html'));
+  });
 
 
   app.get('/logout', (req, res) => {

@@ -153,7 +153,7 @@ const registerUser = async (req, res) => {
 
 const registerEmployer = async (req, res) => {
   const companyLogo=req.file.path;
-  const { director, email, password, industry, website, name } =
+  const { director, email, password, industry, website, name,phone,companyDetails } =
     req.body;
     console.log(director, email, password, industry, website, name)
   try {
@@ -185,6 +185,8 @@ const registerEmployer = async (req, res) => {
       name,
       director,
       email,
+      phone,
+      companyDetails,
       password: hashedPassword,
       industry,
       website,
@@ -258,6 +260,8 @@ const verifyOTP = async (req, res) => {
         name: parsed.name,
         director:parsed.director,
         email: parsed.email,
+        phone:parsed.phone,
+        companyDetails:parsed.companyDetails,
         password: parsed.password,
         industry: parsed.industry,
         website: parsed.website,

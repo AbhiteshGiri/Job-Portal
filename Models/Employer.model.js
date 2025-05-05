@@ -6,6 +6,8 @@ const employerSchema = new mongoose.Schema(
     name:{type:String},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    phone:{type:Number},
+    companyDetails:{type:String},
     otp: { type: String },  
     otpExpires: { type: Date },  
     isVerified: { type: Boolean, default: false },
