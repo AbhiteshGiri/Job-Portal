@@ -246,7 +246,7 @@
                   <a class="nav-link links" href="./Login.html">Sign in</a>
                 </li>
                 <li class="button-group">
-                  <a href="./signupjobseeker.html" class="button btn btn-common"
+                  <a href="/signupjobseeker" class="button btn btn-common"
                     >Register For Jobseeker</a
                   >
                 </li>
@@ -283,7 +283,7 @@
 
               <!-- Recruiter Signup Form -->
               <form class="login-form" onsubmit="register(event)">
-                <!-- Username -->
+                <!-- Company Name -->
                 <div class="form-group">
                   <div class="input-icon">
                     <i class="lni lni-user-4"></i>
@@ -291,7 +291,21 @@
                       type="text"
                       class="form-control"
                       name="name"
-                      placeholder="Username"
+                      placeholder="Company Name"
+                    />
+                  </div>
+                </div>
+
+                <!-- Company Director or CEO Name -->
+                <div class="form-group">
+                  <div class="input-icon">
+                    <i class="lni lni-user-4"></i>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Director"
+                      id="Director"
+                      placeholder="Company Director Name"
                     />
                   </div>
                 </div>
@@ -300,6 +314,7 @@
                 <div class="form-group">
                   <div class="input-icon">
                     <i class="bi bi-images"></i>
+                  
                     <input
                       type="file"
                       class="form-control"
@@ -577,6 +592,7 @@
 
       let email = document.getElementsByName("email")[0].value;
       let name = document.getElementsByName("name")[0].value;
+      let director = document.getElementById("Director").value;
       let password = document.getElementById("password").value;
       let confirm_password = document.getElementById("confirm_password").value;
       let companyLogo = document.getElementById("CompanyLogo").files[0];
@@ -598,7 +614,10 @@
       try {
         const formData = new FormData();
         formData.append("email", email);
+       
         formData.append("name", name);
+        formData.append("director", director);
+        console.log(director)
         formData.append("password", password);
         formData.append("companyLogo", companyLogo);
         const res = await fetch("/auth/register-employer", {

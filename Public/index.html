@@ -270,7 +270,7 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item links" href="/single-post.html"
+                      <a class="dropdown-item links" href="/single-post"
                         >Blog Single Post</a
                       >
                     </li>
@@ -280,7 +280,7 @@
                   <a class="nav-link links" href="/contact"> Contact </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link links" href="/Login.html">Sign in</a>
+                  <a class="nav-link links" href="/Login">Sign in</a>
                 </li>
                 <li class="button-group">
                   <a href="#" id="postJobBtn" class="button btn btn-common links"
@@ -1656,7 +1656,7 @@
 
         if (!response.ok) {
             // If unauthorized, show alert and redirect to login page
-            alert(data.message || "You need to log in as an employer to post a job.");
+           // alert(data.message || "You need to log in as an employer to post a job.");
             window.location.href = "/login"; // Redirect to the login page
             return;
         }

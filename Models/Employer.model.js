@@ -2,7 +2,7 @@ const mongoose=require('mongoose')
 
 const employerSchema = new mongoose.Schema(
   {
-    companyName: { type: String},
+    director:{type:String},
     name:{type:String},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },

@@ -153,9 +153,9 @@ const registerUser = async (req, res) => {
 
 const registerEmployer = async (req, res) => {
   const companyLogo=req.file.path;
-  const { companyName, email, password, industry, website, name } =
+  const { director, email, password, industry, website, name } =
     req.body;
-
+    console.log(director, email, password, industry, website, name)
   try {
     // if (!isValidEmailDomain(email)) {
     //   return res.status(400).json({ message: "Email domain must end with .com, .org, or .in" });
@@ -182,8 +182,8 @@ const registerEmployer = async (req, res) => {
     });
 
     const data = JSON.stringify({
-      companyName,
       name,
+      director,
       email,
       password: hashedPassword,
       industry,
@@ -191,12 +191,13 @@ const registerEmployer = async (req, res) => {
       companyLogo,
       otp,
     });
-
+    
     await redisClient.set(`pending:${email}`, data, { EX: 300 }); // TTL = 5 min
     console.log(otp);
     await sendOTP(email, otp);
     res.status(201).json({ message: "OTP sent. Please verify.", email });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
@@ -254,8 +255,8 @@ const verifyOTP = async (req, res) => {
       }
 
       const employer = await Employer.create({
-        companyName: parsed.companyName,
         name: parsed.name,
+        director:parsed.director,
         email: parsed.email,
         password: parsed.password,
         industry: parsed.industry,

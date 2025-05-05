@@ -67,6 +67,17 @@ app.get("/index2",all.allProtect,(req, res) => {
   app.get('/post-job',all.employerProtect,(req,res)=>{
     res.sendFile(path.join(__dirname, './Public', 'post-job.html'));
   });
+  app.get('/signupjobseeker',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'signupjobseeker.html'));
+  });
+  app.get('/register',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'register.html'));
+  });
+  app.get('/singlepost',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'singlepost.html'));
+  });
+
+
   app.get('/logout', (req, res) => {
     res.clearCookie('token', {
       httpOnly: true,
