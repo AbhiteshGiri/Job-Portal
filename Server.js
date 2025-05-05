@@ -76,6 +76,9 @@ app.get("/index2",all.allProtect,(req, res) => {
   app.get('/singlepost',(req,res)=>{
     res.sendFile(path.join(__dirname, './Public', 'singlepost.html'));
   });
+  app.get('/employerlogin',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'employerLogin.html'));
+  });
 
 
   app.get('/logout', (req, res) => {
