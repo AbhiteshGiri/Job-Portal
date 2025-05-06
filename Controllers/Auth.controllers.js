@@ -154,7 +154,7 @@ const resume = req.files?.resume?.[0]?.path || null;
 // };
 
 const registerEmployer = async (req, res) => {
-  const companyLogo=req.file.path;
+  const companyLogo=req.file?req.file.path:null;
   const { director, email, password, industry, website, name,phone,companyDetails } =
     req.body;
     console.log(director, email, password, industry, website, name)

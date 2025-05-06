@@ -343,7 +343,7 @@
                       type="tel"
                       class="form-control"
                       name="phone_user"
-                      placeholder="Phone Number"
+                      maxlength="10" placeholder="Enter 10-digit mobile number" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                     />
                   </div>
                 </div>

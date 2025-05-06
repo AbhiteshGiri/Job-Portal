@@ -59,22 +59,32 @@ const employerProtect = async (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
 
     if (admintoken) {
+      // console.log("admintoken\n")
+      // console.log(admintoken)
       const admindecoded = jwt.verify(admintoken, process.env.JWT_SECRET);
       if (admindecoded.role === "admin") {
         req.role = "admin";
         req.id = admindecoded.id;
         return next();
       }
+      else{
+        return res.redirect("/employerlogin")
+      }
     }
 
     if (token) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       const employer = await Employer.findById(decoded.id);
+      // console.log("User token\n")
+      // console.log(token)
       if (!employer) {
-        return res.status(403).json({ message: "Unauthorized access: Only Recruiter Can Post A Job" });
+        
+        return res.redirect("/employerlogin")
+        
       }
       req.employer = employer;
       return next();
+      
     }
 
     // If neither token is valid

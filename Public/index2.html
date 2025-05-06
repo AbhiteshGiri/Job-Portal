@@ -16,7 +16,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
-    <meta name="author" content="UIdeck" />
+  
     <link rel="icon" href="./JobXSearch/logo.png" />
     <title>Pagaar India</title>
 
@@ -186,7 +186,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item links" href="./post-job.html"
+                      <a class="dropdown-item links" href="/post-job"
                         >Add Job</a
                       >
                     </li>
@@ -247,7 +247,7 @@
                   <a class="nav-link links" id="Logout" href="#">Logout</a>
                 </li>
                 <li class="button-group">
-                  <a href="./post-job.html" class="button btn btn-common"
+                  <a href="/post-job" class="button btn btn-common"
                     >Post a Job</a
                   >
                 </li>
@@ -1580,6 +1580,37 @@
           })
           .catch((err) => console.error("Logout error:", err));
       });
+
+      document
+        .querySelector("#postJobBtn")
+        .addEventListener("click", async (e) => {
+          e.preventDefault(); // Prevent the default anchor behavior (navigation)
+
+          try {
+            const response = await fetch("/post-job", {
+              method: "GET",
+              credentials: "include", // Send cookies for authentication (if needed)
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+              // If unauthorized, show alert and redirect to login page
+              // alert(data.message || "You need to log in as an employer to post a job.");
+              window.location.href = "/employerlogin"; // Redirect to the login page
+              return;
+            }
+
+            // If the user is authorized, continue to the post-job page
+            window.location.href = "/post-job"; // Proceed to post-job page
+          } catch (err) {
+            console.error("Error:", err);
+            alert("An unexpected error occurred.");
+          }
+        });
+
+
+
     </script>
   </body>
 </html>
