@@ -5,6 +5,7 @@ const Job = require('../Models/job.model')
 const createJob = async (req, res) => {
   try {
     const { body, files } = req;
+    console.log(body,files)
    if(req.role=='admin'){
     const newJob = new Job({
       ...body,
@@ -31,6 +32,7 @@ const createJob = async (req, res) => {
    }
     
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message:  error.message });
   }
 };

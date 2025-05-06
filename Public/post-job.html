@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1020,7 +1021,7 @@
             e.stopImmediatePropagation();
             const form = e.target;
             const formData = new FormData(form);
-
+         
             try {
               const response = await fetch("/job/create", {
                 method: "POST",
@@ -1029,10 +1030,16 @@
                 },
                 body: formData,
               });
-
-              const result = await response.json();
+            
+              let result = {};
+              try {
+                result = await response.json();
+              } catch (jsonError) {
+                console.error("JSON Parse Error:", jsonError);
+              }
+            
               console.log("Backend Response:", result);
-
+            
               if (response.ok) {
                 alert("✅ Job posted successfully!");
               } else {
@@ -1047,6 +1054,7 @@
               console.error("Network Error:", error);
               alert("⚠ Network error. Please try again later.");
             }
+            
           });
       });
       document.getElementById("Logout").addEventListener("click", async (e) => {
@@ -1059,9 +1067,9 @@
           .then((data) => {
             window.location.href = "/";
           })
-          .catch((err) => console.error("Logout error:", err));
+          .catch((err) => console.error("Logout error:", err));
       });
     </script>
-      
+      
   </body>
 </html>
