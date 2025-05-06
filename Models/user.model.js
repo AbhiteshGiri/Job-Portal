@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
     location: { type: String },
     linkedin: { type: String },
     profilePic:{type:String},
-    resume: [{ type: Buffer }],
+    resume: { type: String },
     appliedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
     savedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
     resetToken: String,

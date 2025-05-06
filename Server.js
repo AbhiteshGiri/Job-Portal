@@ -104,7 +104,9 @@ app.get("/index2",all.allProtect,(req, res) => {
     res.sendFile(path.join(__dirname, './Public', 'privacy.html'));
   });
 
-
+  app.get('/contact',(req,res)=>{
+    res.sendFile(path.join(__dirname, './Public', 'Contact.html'));
+  })
   app.get('/logout', (req, res) => {
     res.clearCookie('token', {
       httpOnly: true,
@@ -114,9 +116,7 @@ app.get("/index2",all.allProtect,(req, res) => {
     res.status(200).json({ message: 'Logged out successfully' });
   });
 
-app.get('/contact',(req,res)=>{
-  res.sendFile(path.join(__dirname, './Public', 'Contact.html'));
-})
+
 app.listen(process.env.PORT,()=>{
     console.log("App is running on 3000")
 })

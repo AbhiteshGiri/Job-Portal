@@ -91,7 +91,7 @@
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="./index.html#"
+                    href="#"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -100,7 +100,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="./about.html">About</a>
+                      <a class="dropdown-item" href="./About.html">About</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="./job-page.html"
@@ -108,8 +108,8 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="./job-details.html"
-                        >Job Details</a
+                      <a class="dropdown-item" href="/dashboard"
+                        >Dashboard</a
                       >
                     </li>
                     <li>
@@ -125,20 +125,20 @@
                     <li>
                       <a class="dropdown-item" href="./faq.html">FAQ</a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a class="dropdown-item" href="./pricing.html"
                         >Pricing Tables</a
                       >
-                    </li>
+                    </li> -->
                     <li>
-                      <a class="dropdown-item" href="./contact.html">Contact</a>
+                      <a class="dropdown-item" href="/contact">Contact</a>
                     </li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="./index.html#"
+                    href="#"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -156,11 +156,11 @@
                         >Browse Categories</a
                       >
                     </li>
-                    <li>
+                    <!-- <li>
                       <a class="dropdown-item" href="./add-resume.html"
                         >Add Resume</a
                       >
-                    </li>
+                    </li> -->
                     <li>
                       <a class="dropdown-item" href="./manage-resumes.html"
                         >Manage Resumes</a
@@ -176,7 +176,7 @@
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="./index.html#"
+                    href="#"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -209,7 +209,7 @@
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="./index.html#"
+                    href="#"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -240,7 +240,7 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./Contact.html"> Contact </a>
+                  <a class="nav-link" href="/contact"> Contact </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/Login">Login</a>
@@ -442,7 +442,8 @@
                     <input
                       type="file"
                       class="form-control"
-                      name="resume_user"
+                      name="resume"
+                      id="resume"
                       accept=".pdf,.doc,.docx"
                     />
                   </div>
@@ -522,7 +523,7 @@
                     <a href="./index.html#">License</a>
                   </li>
                   <li>
-                    <a href="./Contact.html">Contact</a>
+                    <a href="/contact">Contact</a>
                   </li>
                 </ul>
                 <ul class="menu">
@@ -750,6 +751,7 @@
       let linkedin = document.getElementsByName("linkedin_user")[0].value;
       let password = document.getElementById("password_jobSeeker").value;
       let profilePic = document.getElementById("profilePic").files[0];
+      let resume=document.getElementById('resume').files[0];
       let confirm_password = document.getElementById(
         "password_jobSeeker_conf"
       ).value;
@@ -804,17 +806,17 @@
         formData.append("experience", experience);
         formData.append("skills", skills);
         formData.append("location", location);
+        formData.append("resume",resume);
 
         const res = await fetch("/auth/register-user", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: fromData,
+          body: formData,
         });
 
         const result = await res.json();
         if (res.ok) {
           alert("Registration successful!");
-          window.location.href = "/login";
+          window.location.href = "/index2";
         } else {
           alert(`Error: ${result.message || "Registration failed"}`);
         }

@@ -23,8 +23,10 @@ const registerUser = async (req, res) => {
     linkedin,
     password,
   } = req.body;
-  const resume = req.file ? req.file.path : null;
-  const profilePic= req.file? req.file.path:null;
+  console.log(req.body)
+  const profilePic = req.files?.profilePic?.[0]?.path || null;
+const resume = req.files?.resume?.[0]?.path || null;
+
   try {
     const userExists = await User.findOne({ email });
     if (userExists)
