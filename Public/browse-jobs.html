@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -323,11 +324,11 @@
         </div>
         <div class="row" id="jobsContainer"></div>
         <br />
-        <h4 class="similar-jobs-heading text-center py-4">
+        <!-- <h4 class="similar-jobs-heading text-center py-4">
           Similar Jobs On the Page
-        </h4>
+        </h4> -->
         <br>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-lg-6 col-md-12 col-xs-12">
             <a class="job-listings-featured" href="/dashboard">
               <div class="row">
@@ -521,7 +522,7 @@
             </ul>
             <!-- End Pagination -->
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
     <!-- Job Browse Section End -->
@@ -750,7 +751,7 @@
                         <span class="company-neme">${jobs[0].company}</span>
                         <div class="tags">
                           <span><i class="lni-map-marker"></i> ${jobs[0].location}</span>
-                          <span><i class="lni-user"></i> ${jobs[0].postedBy}</span>
+                          <span><i class="lni-user"></i> ${jobs[0].Employer_id.director}</span>
                         </div>
                       </div>
                     </div>
@@ -759,7 +760,7 @@
                         <span class="heart-icon">
                           <i class="lni-heart"></i>
                         </span>
-                        <span class="full-time">${jobs[0].type}</span>
+                        <span class="full-time">${jobs[0].jobType}</span>
                       </div>
                     </div>
                   </div>
@@ -768,20 +769,22 @@
             `;
           } else {
             jobs.forEach((job) => {
+              console.log(jobs)
+              console.log(job)
               container.innerHTML += `
                 <div class="col-lg-6 col-md-12 col-xs-12">
                   <a class="job-listings-featured" href="/job-details.html?id=${job._id}">
                     <div class="row">
                       <div class="col-lg-6 col-md-6 col-xs-12">
                         <div class="job-company-logo">
-                          <img src="/uploads/resume/${job.logo}" alt="">
+                          <img src="${job.logo}" alt="" height="25px" width="20px">
                         </div>
                         <div class="job-details">
                           <h3>${job.title}</h3>
                           <span class="company-neme">${job.company}</span>
                           <div class="tags">
                             <span><i class="lni-map-marker"></i> ${job.location}</span>
-                            <span><i class="lni-user"></i> ${job.postedBy}</span>
+                            <span><i class="lni-user"></i> ${job.Employer_id.director}</span>
                           </div>
                         </div>
                       </div>
@@ -790,7 +793,7 @@
                           <span class="heart-icon">
                             <i class="lni-heart"></i>
                           </span>
-                          <span class="full-time">${job.type}</span>
+                          <span class="full-time">${job.jobType}</span>
                         </div>
                       </div>
                     </div>
@@ -810,6 +813,6 @@
       window.onload = fetchJobs;
     </script>
 
-     
+     
   </body>
 </html>

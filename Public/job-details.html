@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -305,26 +306,37 @@
               <div class="img-wrapper">
                 <img id="job-logo" src="" alt="" />
               </div>
-              <div class="content">
-                <h3 class="product-title" id="job-title">Hiring UI Designer</h3>
-                <p class="brand" id="job-company">UIDeck Inc.</p>
-                <div class="tags">
-                  <span
-                    ><i class="lni-map-marker"></i>
-                    <span id="job-location">New York</span></span
-                  >
-                  <span
-                    ><i class="lni-calendar"></i> Posted
-                    <span id="job-date">26 June, 2020</span></span
-                  >
+              <div class="row align-items-center">
+                <!-- Image Column -->
+                <div class="col-md-3 text-center mb-3 mb-md-0">
+                  <img src="" id="logo" class="img-fluid rounded" width="100" alt="Company Logo">
+                </div>
+              
+                <!-- Text Content Column -->
+                <div class="col-md-9">
+                  <h3 class="product-title" id="job-title"></h3>
+                  <p class="brand mb-1" id="job-company"></p>
+                  <div class="tags d-flex flex-wrap gap-3">
+                    <span>
+                      <i class="lni-map-marker"></i>
+                      <span id="job-location"></span>
+                    </span>
+                    <span>
+                      <i class="lni-calendar"></i>
+                      Created At 
+                      <span id="job-date">26 June, 2020</span>
+                    </span>
+                  </div>
                 </div>
               </div>
+              
+              
             </div>
           </div>
           <div class="col-lg-4 col-md-6 col-xs-12">
             <div class="month-price">
-              <span class="year">Yearly</span>
-              <div class="price" id="job-salary">$65,000</div>
+              <span class="year">Salary:</span>
+              <div class="price" id="job-salary">Not Disclosed</div>
             </div>
           </div>
         </div>
@@ -419,7 +431,7 @@
     </section>
 
     <!-- Featured Section Start -->
-    <section id="featured" class="section bg-gray pb-45">
+    <!-- <section id="featured" class="section bg-gray pb-45">
       <div class="container">
         <h4 class="small-title text-left">Similar Jobs</h4>
         <div class="row">
@@ -441,9 +453,9 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12 text-right">
                   <div class="tag-type">
-                    <sapn class="heart-icon">
+                    <span class="heart-icon">
                       <i class="lni-heart"></i>
-                    </sapn>
+                    </span>
                     <span class="full-time">Full Time</span>
                   </div>
                 </div>
@@ -468,9 +480,9 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12 text-right">
                   <div class="tag-type">
-                    <sapn class="heart-icon">
+                    <span class="heart-icon">
                       <i class="lni-heart"></i>
-                    </sapn>
+                    </span>
                     <span class="part-time">Part Time</span>
                   </div>
                 </div>
@@ -479,7 +491,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- Featured Section End -->
 
     <!-- Footer Section Start -->
@@ -674,14 +686,23 @@
         try {
           const res = await fetch(`/job/job/${jobId}`);
           const job = await res.json();
+          console.log(job)
+         document.getElementById("job-title").innerHTML=job.title
+         document.getElementById("logo").src=job.logo
+         
+         
 
+          document.getElementById("job-company").innerHTML=job.company
+          document.getElementById("job-location").innerHTML=job.location
           document.getElementById("job-description").textContent =
             job.description;
-
+            const dateOnly = new Date(job.createdAt).toLocaleDateString('en-CA');
+            document.getElementById("job-date").innerHTML=dateOnly;
+          
           const skillsList = document.getElementById("job-skills");
           skillsList.innerHTML = "";
-          if (Array.isArray(job.skills)) {
-            job.skills.forEach((skill) => {
+          if (Array.isArray(job.tags)) {
+            job.tags.forEach((skill) => {
               const li = document.createElement("li");
               li.textContent = `${skill}`;
               skillsList.appendChild(li);
@@ -725,7 +746,7 @@
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
-            },
+            }
           });
           const data = await res.json();
 

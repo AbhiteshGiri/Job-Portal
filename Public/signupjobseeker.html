@@ -815,6 +815,7 @@
 
         const result = await res.json();
         if (res.ok) {
+          localStorage.setItem("token",token)
           alert("Registration successful!");
           window.location.href = "/index2";
         } else {

@@ -19,6 +19,16 @@
        font-weight: bold !important;
        font-size: 17px!important;
      }
+     .add-job-btn {
+      background-color: #00c4cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      position: relative;
+      left: 80%;
+    }
  </style>
 </head>
 <body>
@@ -30,8 +40,8 @@
         <a id="dashboardLink">Dashboard</a>
         <a id="profileLink">Profile</a>
         <a id="activityLink">Activity</a>
-        <!-- <a id="messagesLink">Messages</a>
-        <a id="settingsLink">Settings</a> -->
+        <a id="messagesLink">Messages</a>
+        <a id="settingsLink">Settings</a>
         <a id="logoutLink">Logout</a>
       </nav>
       <main class="col-md-10 p-4">
@@ -44,6 +54,7 @@
   <template id="dashboardTemplate">
     <div id="dashboardContent">
       <div class="mb-4">
+        <button class="add-job-btn " id="AddJob" onclick="postJob()">+ Add Job</button>
         <h2 id="greeting">Welcome, User!</h2>
         <p id="roleDisplay" class="lead"></p>
       </div>
@@ -51,7 +62,7 @@
       <div class="card mb-4 shadow-sm p-4">
         <div class="row align-items-center">
           <div class="col-md-2 text-center">
-            <img src="./JobXSearch/profile-default.jpg" alt="Profile Picture" class="profile-img" id="profilepic">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img" id="profilepic">
           </div>
           <div class="col-md-10">
             <h4 id="userName">Name</h4>
@@ -162,9 +173,12 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
   <script>
-    const token = localStorage.getItem("token");
 
+
+    const token = localStorage.getItem("token");
+    
     document.getElementById("dashboardLink").addEventListener("click", loadDashboard);
 
     async function fetchDashboardData() {
@@ -206,8 +220,8 @@
       const tbody = table.querySelector("#jobsTableBody");
      console.log(jobs)
       jobs.forEach(item => {
-        console.log(item.job)
-        const job =item.job;
+        
+        const job =item;
        
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -277,8 +291,8 @@
                     <td>${applicant.applicant.name}</td>
                     <td>${applicant.applicant.email}</td>
                     <td>
-                      <a href="/${applicant.resume}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
-                      <a href="/${applicant.resume}" download class="btn btn-sm btn-outline-success ms-2">Download</a>
+                      <a href="${applicant.resume}" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+                      <a href="${applicant.resume}" download class="btn btn-sm btn-outline-success ms-2">Download</a>
                     </td>
                   </tr>
                 `).join("")}
@@ -496,6 +510,13 @@
       }
     }
     
+  </script>
+  <script>
+    function postJob(){
+  
+      window.location.href='/post-job'
+    
+  }
   </script>
 </body>
 </html>

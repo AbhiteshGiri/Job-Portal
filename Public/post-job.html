@@ -105,7 +105,7 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item links" href="/dashboard"
+                      <a class="dropdown-item links" href="/job-details.html"
                         >Dashboard</a
                       >
                     </li>
@@ -711,6 +711,23 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="control-label">Type</label>
+                  <div class="search-category-container">
+                    <label class="styled-select">
+                      <select
+                        name="Type"
+                        class="dropdown-product selectpicker"
+                        required
+                      >
+                        <option value="">Select a Category</option>
+                        <option>Others</option>
+                        <option>Full Time</option>
+                        <option>Part-time</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="control-label">Job Tags <span>(optional)</span></label>
                   <input
                     type="text"
@@ -776,7 +793,7 @@
                     name="companyLogo"
                     class="form-control"
                     accept="image/*"
-                    
+                    required
                   />
                 </div>
               
@@ -1021,9 +1038,11 @@
       
               if (response.ok) {
                 alert("✅ Job posted successfully!");
+                
                 //form.reset(); // Reset form fields
                 // Optionally reset file input as well (if needed)
                 form.querySelector('input[type="file"]').value = ""; // Clear file input field
+                window.location.href='/dashboard'
               } else {
                 alert("❌ " + (result.message || "Something went wrong."));
                 if (response.status === 401 || response.status === 403) {

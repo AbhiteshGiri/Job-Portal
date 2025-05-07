@@ -29,8 +29,9 @@ router.get("/jobs", async (req, res) => {
         query.location = { $regex: location, $options: "i" };
       }
   
-      const jobs = await job.find(query);
+      const jobs = await job.find(query).populate("Employer_id","director");
       res.json(jobs);
+      console.log(jobs)
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
