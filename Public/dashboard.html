@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +30,8 @@
         <a id="dashboardLink">Dashboard</a>
         <a id="profileLink">Profile</a>
         <a id="activityLink">Activity</a>
-        <a id="messagesLink">Messages</a>
-        <a id="settingsLink">Settings</a>
+        <!-- <a id="messagesLink">Messages</a>
+        <a id="settingsLink">Settings</a> -->
         <a id="logoutLink">Logout</a>
       </nav>
       <main class="col-md-10 p-4">
@@ -50,7 +51,7 @@
       <div class="card mb-4 shadow-sm p-4">
         <div class="row align-items-center">
           <div class="col-md-2 text-center">
-            <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img" id="profilepic">
+            <img src="./JobXSearch/profile-default.jpg" alt="Profile Picture" class="profile-img" id="profilepic">
           </div>
           <div class="col-md-10">
             <h4 id="userName">Name</h4>
@@ -173,8 +174,9 @@
         });
         if (!res.ok) throw new Error("Failed to fetch dashboard data");
        let data= await res.json();
-       
+       console.log(data)
         return data
+       
       } catch (err) {
         console.error(err);
         alert("Error loading dashboard.");
@@ -190,6 +192,7 @@
         contentArea.innerHTML += `<p class="text-muted">${isJobseeker ? 'You haven\'t applied to any jobs yet.' : 'You haven\'t posted any jobs yet.'}</p>`;
         return;
       }
+  
 
       const table = document.createElement("table");
       table.className = "table table-striped";
@@ -201,12 +204,14 @@
       contentArea.appendChild(table);
 
       const tbody = table.querySelector("#jobsTableBody");
-
+     console.log(jobs)
       jobs.forEach(item => {
+        console.log(item.job)
         const job =item.job;
+       
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td><img src="/uploads/resume/${job.logo || 'placeholder.png'}" style="height: 40px;"></td>
+          <td><img src="${job.logo || 'placeholder.png'}" style="height: 40px;"></td>
           <td>${job.title}</td>
           <td>${job.company}</td>
           <td>${job.location}</td>
@@ -357,7 +362,7 @@
       contentArea.appendChild(template.content.cloneNode(true));
 
       const profile = await fetchDashboardData();
-      console.log(profile.companyLogo)
+      console.log(profile.jobsPost)
       document.getElementById("profilepic").src=`${profile.companyLogo|| profile.profilepic }`
       document.getElementById("userName").textContent = profile.name;
       document.getElementById("userEmail").textContent = profile.email;
@@ -398,40 +403,54 @@
 
       renderActivities(profile.activities);
     }
-    function renderProfileForm(profile) {
-      const contentArea = document.getElementById("contentArea");
-      contentArea.innerHTML = 
-      `  <h3 class="mb-4">Edit Your Profile</h3>
-        <form id="profileForm" class="card p-4 shadow-sm">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-control" name="name" value="${profile.name}" />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" name="email" value="${profile.email}"disabled />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Role</label>
-              <input type="text" class="form-control" name="role" value="${profile.role}" disabled/>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Joined On</label>
-              <input type="text" class="form-control" value="${new Date(profile.joined)}" disabled />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Last Login</label>
-              <input type="text" class="form-control" value="${new Date(profile.lastLogin)}" disabled />
-            </div>
-          </div>
-          <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-          </div>
-        </form>`
-      ;
-    }
+  function renderProfileForm(profile) {
+  const contentArea = document.getElementById("contentArea");
 
+  const directorField = profile.director
+    ? `<div class="col-md-6">
+         <label class="form-label">Director Name</label>
+         <input type="text" class="form-control" name="director" id="director" value="${profile.director}" />
+       </div>`
+    : '';
+
+  const nameLabel = profile.role === "jobseeker" ? "Your Name" : "Company Name";
+
+  contentArea.innerHTML = `
+    <h3 class="mb-4">Edit Your Profile</h3>
+    <form id="profileForm" class="card p-4 shadow-sm">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">${nameLabel}</label>
+          <input type="text" class="form-control" name="name" id="name" value="${profile.name}" />
+        </div>
+        ${directorField}
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" value="${profile.email}" disabled />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Role</label>
+          <input type="text" class="form-control" name="role" value="${profile.role}" disabled />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Joined On</label>
+          <input type="text" class="form-control" value="${new Date(profile.joined).toLocaleString()}" disabled />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Last Login</label>
+          <input type="text" class="form-control" value="${new Date(profile.lastLogin).toLocaleString()}" disabled />
+        </div>
+      </div>
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </form>
+  `;
+
+  // Attach submit listener
+  const form = document.getElementById("profileForm");
+  form.addEventListener("submit", (e) => Savechanges(e, profile.role));
+}
 
     loadDashboard();
 
@@ -444,6 +463,39 @@
      }
    
     })
+    async function Savechanges(e, role) {
+      e.preventDefault(); // Stop form reload
+    
+      const name = document.getElementById("name").value;
+    
+      if (role === "jobseeker") {
+        console.log("Job seeker API calls (add your fetch here)");
+        // TODO: Add fetch call for jobseeker update
+      } else {
+        const director = document.getElementById("director").value;
+        try {
+          const res = await fetch("/employer/savechanges", {
+            method: "POST",
+            body: JSON.stringify({ director, name }),
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+          });
+    
+          const result = await res.json();
+          if (res.ok) {
+            alert("Updated record successfully!");
+          } else {
+            alert("Error: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Something went wrong!");
+        }
+      }
+    }
+    
   </script>
 </body>
 </html>

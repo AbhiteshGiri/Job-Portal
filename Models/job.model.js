@@ -8,7 +8,7 @@ const jobSchema = new mongoose.Schema(
     location: { type: String }, // Optional
     category: { 
       type: String, 
-      enum: ["Education/Training", "IT & Engineering", "Art/Design", "Sale/Markting", "Healthcare", "Others","Food Services"], 
+      enum: ["Education/Training", "IT & Engineering", "Art/Design", "Sale/Marketing", "Healthcare", "Others","Food Services"], 
       
     },
 

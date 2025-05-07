@@ -3,15 +3,18 @@ const Job = require('../Models/job.model')
 
 // CREATE
 const createJob = async (req, res) => {
+  console.log("BODY:", req.body);
+console.log("FILES:", req.file);
+
   try {
     const { body, files } = req;
-    console.log(body,files)
    if(req.role=='admin'){
     const newJob = new Job({
       ...body,
      // Employer_id: req.id,
-      logo: files?.companyLogo?.[0]?.filename || '',
-      jdFile: files?.jobDescriptionFile?.[0]?.filename || ''
+     logo: req.file?.filename || ''
+
+     // jdFile: files?.jobDescriptionFile?.[0]?.filename || ''
       
     });
     const savedJob = await newJob.save();
@@ -21,18 +24,17 @@ const createJob = async (req, res) => {
     const newJob = new Job({
       ...body,
       Employer_id: req.employer._id,
-      logo: files?.companyLogo?.[0]?.filename || '',
-      jdFile: files?.jobDescriptionFile?.[0]?.filename || ''
+     logo: req.file?.path|| ''
     });
     
     req.employer.jobPosts.push(newJob._id);
     await req.employer.save();
     const savedJob = await newJob.save();
+
     res.status(201).json(savedJob);
    }
     
   } catch (error) {
-    console.log(error)
     res.status(500).json({ message:  error.message });
   }
 };

@@ -14,7 +14,7 @@ const protect = async (req, res, next) => {
       token = token.split(" ")[1];
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log("Decoded token:", decoded);
+     
 
       // First check if it's a user
       const user = await UserModel.findById(decoded.id)
@@ -25,7 +25,7 @@ const protect = async (req, res, next) => {
         req.profile = user;
         req.user = user;
         req.role = "seeker";
-        console.log("User authenticated");
+       
         return next();
       }
 
@@ -36,16 +36,17 @@ const protect = async (req, res, next) => {
 
       if (employer) {
         req.profile = employer;
+        console.log(employer)
         req.employer = employer;
         req.role = "employer";
-        console.log("Employer authenticated");
+       
         return next();
       }
 
       // If neither found
       return res.status(401).json({ message: "User not found" });
     } catch (error) {
-      console.log("JWT error:", error.message);
+      
       return res.status(401).json({ message: "Invalid token" });
     }
   } else {
@@ -59,13 +60,21 @@ const employerProtect = async (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
 
     if (admintoken) {
-      // console.log("admintoken\n")
-      // console.log(admintoken)
+     
       const admindecoded = jwt.verify(admintoken, process.env.JWT_SECRET);
+     
+
+      
       if (admindecoded.role === "admin") {
         req.role = "admin";
         req.id = admindecoded.id;
+     
         return next();
+      }
+      else if(admindecoded.role=='employer'){
+      const employer = await Employer.findById(admindecoded.id);
+      req.employer = employer;
+      return next();
       }
       else{
         return res.redirect("/employerlogin")
@@ -73,15 +82,16 @@ const employerProtect = async (req, res, next) => {
     }
 
     if (token) {
+     
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       const employer = await Employer.findById(decoded.id);
-      // console.log("User token\n")
-      // console.log(token)
+     
       if (!employer) {
         
         return res.redirect("/employerlogin")
         
       }
+    
       req.employer = employer;
       return next();
       
@@ -103,7 +113,7 @@ const employerProtect = async (req, res, next) => {
 
 const allProtect = async (req, res, next) => {
   let token = req.cookies.token
-  console.log(token); 
+ 
   if (token) {
       try {
           const decoded = jwt.verify(token, process.env.JWT_SECRET);

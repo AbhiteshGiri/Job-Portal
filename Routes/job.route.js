@@ -8,7 +8,7 @@ const job= require('../Models/job.model')
 
 // router.get('/', getJobs);
 // router.get('/:id', getJobById);
-router.post('/create', employerProtect, upload.fields([{ name: 'companyLogo', maxCount: 1 }, { name: 'jobDescriptionFile', maxCount: 1 }]),createJob);
+router.post('/create', employerProtect, upload.single("companyLogo"),createJob);
 router.put('/update/:id', employerProtect, updateJob);
 router.delete('/delete/:id', employerProtect, deleteJob);
 router.put('/status/:id',employerProtect,ChangeStatus)

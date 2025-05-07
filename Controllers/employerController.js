@@ -1,3 +1,4 @@
+const Employer=require('../Models/Employer.model');
 const getdashboard = async (req, res) => {
     const { profile, role } = req;
   
@@ -54,6 +55,7 @@ const getdashboard = async (req, res) => {
         name: profile.name,
         email: profile.email,
         role: "recruiter",
+        director:profile.director,
         joined: profile.createdAt?.toDateString() || "Unknown",
         lastLogin: profile.updatedAt?.toDateString() || "Unknown",
         jobsPosted: profile.jobPosts.length,
@@ -70,4 +72,28 @@ const getdashboard = async (req, res) => {
   
     res.status(400).json({ message: "Invalid role" });
   };
-module.exports={getdashboard};
+
+  const savechanges = async (req, res) => {
+    const { name, director } = req.body;
+    const id = req.employer._id;
+  
+    try {
+      const updatedEmployer = await Employer.findByIdAndUpdate(
+        id,
+        { name, director },
+        { new: true } 
+      );
+  
+      if (updatedEmployer) {
+        res.status(200).json({ message: "Updated successfully" });
+      } else {
+        res.status(404).json({ message: "Employer not found" });
+      }
+  
+    } catch (error) {
+      console.error("Update error:", error);
+      res.status(500).json({ message: "Something went wrong" });
+    }
+  };
+
+module.exports={getdashboard,savechanges};
