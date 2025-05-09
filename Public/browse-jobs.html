@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="./JobXSearch/main.css" />
     <link rel="icon" href="./JobXSearch/logo.png">
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
     <link
       rel="stylesheet"
       id="colors"
@@ -72,6 +74,13 @@
         font-weight: bold !important;
         font-size: 17px!important;
       }
+      .heart-icon{
+         background-color: #fff!important;
+         color: #00BCD4 !important;
+         border: 1px solid #00BCD4!important;
+}
+
+      
     </style>
   </head>
 
@@ -722,11 +731,19 @@
         const location = document.querySelector("#location").value;
 
         try {
+
+          const savedRes = await fetch('/user/saved-jobs', {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+          const savedJobs = await savedRes.json();
+          
           const res = await fetch(
             `/job/jobs?keyword=${keyword}&location=${location}`
           );
           const jobs = await res.json();
-          console.log(jobs);
+          
 
           const container = document.querySelector("#jobsContainer");
           container.innerHTML = "";
@@ -742,24 +759,25 @@
               <div class="col-12">
                 <a class="job-listings-featured" href="/job-details.html?id=${jobs[0]._id}">
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12 d-flex">
                       <div class="job-company-logo">
-                        <img src="./browse-jobs/${jobs[0].logo}" alt="">
+                        <img src="${jobs[0].logo}" alt="" width="20%">
                       </div>
                       <div class="job-details">
                         <h3>${jobs[0].title}</h3>
                         <span class="company-neme">${jobs[0].company}</span>
                         <div class="tags">
                           <span><i class="lni-map-marker"></i> ${jobs[0].location}</span>
-                          <span><i class="lni-user"></i> ${jobs[0].Employer_id.director}</span>
+                          <span><i class="lni-user"></i>${jobs[0].Employer_id.director} </span>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-xs-12 text-right">
                       <div class="tag-type">
-                        <span class="heart-icon">
-                          <i class="lni-heart"></i>
-                        </span>
+                        <span class="heart-icon ${isSaved ? 'filled' : ''}" data-jobid="${job._id}">
+  <i class="bi ${isSaved ? 'bi-heart-fill bookmarked' : 'bi-heart'}"></i>
+</span>
+
                         <span class="full-time">${jobs[0].jobType}</span>
                       </div>
                     </div>
@@ -769,7 +787,7 @@
             `;
           } else {
             jobs.forEach((job) => {
-              console.log(jobs)
+              const isSaved = savedJobs.includes(job._id);
               console.log(job)
               container.innerHTML += `
                 <div class="col-lg-6 col-md-12 col-xs-12">
@@ -784,15 +802,18 @@
                           <span class="company-neme">${job.company}</span>
                           <div class="tags">
                             <span><i class="lni-map-marker"></i> ${job.location}</span>
-                            <span><i class="lni-user"></i> ${job.Employer_id.director}</span>
+                            <span><i class="lni-user"></i>${job.Employer_id.director} </span>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-xs-12 text-right">
                         <div class="tag-type">
-                          <span class="heart-icon">
-                            <i class="lni-heart"></i>
-                          </span>
+                         
+                          <span class="heart-icon ${isSaved ? 'filled' : ''}" data-jobid="${job._id}">
+  <i class="bi ${isSaved ? 'bi-heart-fill bookmarked' : 'bi-heart'}"></i>
+</span>
+
+
                           <span class="full-time">${job.jobType}</span>
                         </div>
                       </div>
@@ -801,6 +822,7 @@
                 </div>
               `;
             });
+            
           }
         } catch (err) {
           console.error("Error fetching jobs:", err);
@@ -808,7 +830,54 @@
             "#jobsContainer"
           ).innerHTML = `<div class="col-12 text-center"><p>Something went wrong. Please try again later.</p></div>`;
         }
+        attachHeartListeners();
       }
+     
+      function attachHeartListeners() {
+  setTimeout(() => {
+    document.querySelectorAll('.heart-icon').forEach(icon => {
+      icon.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const jobId = icon.getAttribute('data-jobid');
+        const heartIcon = icon.querySelector('i');
+        const isBookmarked = icon.classList.contains('filled');
+
+        try {
+          const response = await fetch(`/user/saved-jobs/${jobId}`, {
+            method: isBookmarked ? 'DELETE' : 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+
+          if (response.ok) {
+            // Toggle filled class on span
+            icon.classList.toggle('filled');
+
+            // Toggle Bootstrap heart icons
+            if (heartIcon.classList.contains('bi-heart-fill')) {
+              heartIcon.classList.remove('bi-heart-fill', 'bookmarked');
+              heartIcon.classList.add('bi-heart');
+            } else {
+              heartIcon.classList.remove('bi-heart');
+              heartIcon.classList.add('bi-heart-fill', 'bookmarked');
+            }
+
+          } else {
+            alert('Error updating saved jobs');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    });
+  }, 0);
+}
+
+
+
 
       window.onload = fetchJobs;
     </script>

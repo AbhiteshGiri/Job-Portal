@@ -4,7 +4,7 @@ const { protect, employerProtect } = require('../Middlewares/authMiddleware');
 const upload = require("../Middlewares/uploadMiddlewares")
 const router = express.Router();
 const job= require('../Models/job.model')
-const {applyjob,getUserResumes,getLatestJobsByAppliedTitles,sendEmailContact}=require('../Controllers/userController')
+const {applyjob,getUserResumes,getLatestJobsByAppliedTitles,sendEmailContact,pushjob,popjob,getbookmarked,manageJob,getSavedJobs}=require('../Controllers/userController')
 const ApplicationModel=require('../Models/Application.model');
 const mongoose=require('mongoose')
 const multer= require('multer')
@@ -78,6 +78,11 @@ router.get("/jobs", async (req, res) => {
     }
   });
 
+router.post('/saved-jobs/:jobId', protect,pushjob);
+router.delete('/saved-jobs/:jobId', protect, popjob);
+router.get("/saved-jobs",protect,getSavedJobs)
+router.get("/bookmark",protect,getbookmarked)
+router.get("/my-jobs",protect,manageJob)
 
 router.post('/contactUS', uploader.single('attachment'), sendEmailContact)
 module.exports = router;

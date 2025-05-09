@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- saved from url=(0057)./notifications.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -243,7 +244,7 @@
           <div class="col-lg-12">
             <div class="inner-header">
               <h3>Notifications</h3>
-            </div>
+            </div>
           </div>
         </div>
       </div>
@@ -271,61 +272,8 @@
           <div class="col-md-8 col-sm-8 col-xs-12">
             <div class="job-alerts-item notification">
               <h3 class="alerts-title">Your Notifications</h3>
-                <div id="notification-list"></div>
-              <div class="notification-item">
-                <div class="thums">
-                  <img src="./notifications_files/img-1.jpg" alt="">
-                </div>
-                <div class="text-left">
-                  <p>Your Bookmarked job "Web designer needed" from Banana Inc, has expired.</p>
-                  <span class="time"><i class="lni-alarm-clock"></i>3 Hours ago</span>
-                </div>
-              </div>
-              <div class="notification-item">
-                <div class="thums">
-                  <img src="./notifications_files/img-2.jpg" alt="">
-                </div>
-                <div class="text-left">
-                  <p>Your Bookmarked job "Web designer needed" from Banana Inc, has expired.</p>
-                  <span class="time"><i class="lni-alarm-clock"></i>3 Hours ago</span>
-                </div>
-              </div>
-              <div class="notification-item">
-                <div class="thums">
-                  <img src="./notifications_files/img-3.jpg" alt="">
-                </div>
-                <div class="text-left">
-                  <p>Your Bookmarked job "Web designer needed" from Banana Inc, has expired.</p>
-                  <span class="time"><i class="lni-alarm-clock"></i>3 Hours ago</span>
-                </div>
-              </div>
-              <div class="notification-item">
-                <div class="thums">
-                  <img src="./notifications_files/img-4.jpg" alt="">
-                </div>
-                <div class="text-left">
-                  <p>Your Bookmarked job "Web designer needed" from Banana Inc, has expired.</p>
-                  <span class="time"><i class="lni-alarm-clock"></i>3 Hours ago</span>
-                </div>
-              </div>
-              <div class="notification-item">
-                <div class="thums">
-                  <img src="./notifications_files/img-5.jpg" alt="">
-                </div>
-                <div class="text-left">
-                  <p>Your Bookmarked job "Web designer needed" from Banana Inc, has expired.</p>
-                  <span class="time"><i class="lni-alarm-clock"></i>3 Hours ago</span>
-                </div>
-              </div>
-              <div class="notification-item">
-                <div class="thums">
-                  <img src="./notifications_files/img-6.jpg" alt="">
-                </div>
-                <div class="text-left">
-                  <p>Your Bookmarked job "Web designer needed" from Banana Inc, has expired.</p>
-                  <span class="time"><i class="lni-alarm-clock"></i>3 Hours ago</span>
-                </div>
-              </div>
+                
+              <div id="notification-list"></div>
               <!-- Start Pagination -->
               <ul class="pagination">              
                 <li class="active"><a href="./notifications.html#" class="btn btn-common"><i class="ti-angle-left"></i> prev</a></li>
@@ -523,34 +471,46 @@
     <script src="./notifications_files/form-validator.min.js.download"></script>
     <script src="./notifications_files/contact-form-script.js.download"></script>   
     <script src="./notifications_files/main.js.download"></script>
-    <script>
+     <script>
       async function getnotification() {
         try {
-          const res = await fetch("/user/job-notification", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-              "Content-Type": "application/json"
+          const res = await fetch(
+            "/user/job-notification",
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+              },
             }
-          });
-    
+          );
+
           const result = await res.json();
+          console.log(result)
           const container = document.getElementById("notification-list");
-    console.log(result)
+      
           if (result.success && result.jobs.length > 0) {
             result.jobs.forEach((job, index) => {
-              console.log(job.createdAt)
+           
+              console.log(job)
               const html = `
-                <div class="notification-item">
-                  <div class="thums">
-                    <img src="./notifications_files/${job.image || 'img-1.jpg'}" alt="">
+                <div class="alerts-content">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h3> <strong>${job.title}</strong></h3>
+                    <span class="location"><i class="lni-map-marker"></i> ${job.location}</span>
                   </div>
-                  <div class="text-left">
-                    <p>Your applied job "<strong>${job.title}</strong>" from <strong>${job.company}</strong> has a new posting.</p>
-                    <span class="time"><i class="lni-alarm-clock"></i>Posted: ${new Date(job.createdAt).toLocaleString()}</span>
+                  <div class="col-md-3">
+                    <p> <strong>${job.title}</strong> </p>
+                  </div>
+                  <div class="col-md-3">
+                    <p><span class="full-time">${job.jobType}</span></p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>Daily</p>
                   </div>
                 </div>
-              `;
+              </div>`;
               container.innerHTML += html;
             });
           } else {
@@ -558,12 +518,12 @@
           }
         } catch (err) {
           console.error("Error fetching notifications:", err);
-          document.getElementById("notification-list").innerHTML = "<p>Failed to load notifications.</p>";
+          document.getElementById("notification-list").innerHTML =
+            "<p>Failed to load notifications.</p>";
         }
       }
-    
+
       // Call on page load
       window.onload = getnotification;
-    </script>
-  
+    </script>
 </body></html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- saved from url=(0054)./bookmarked.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -270,110 +271,8 @@
           <div class="col-lg-8 col-md-6 col-xs-12">
             <div class="job-alerts-item bookmarked">
               <h3 class="alerts-title">Bookmarked Jobs</h3>
-              <a class="job-listings" href="/dashboard">
-                <div class="row">
-                  <div class="col-lg-4 col-md-12 col-xs-12">
-                    <div class="job-company-logo">
-                      <img src="./bookmarked_files/img1.png" alt="">
-                    </div>
-                    <div class="job-details">
-                      <h3>App Developer</h3>
-                      <span class="company-neme">
-                        AmazeSoft
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                   <div class="location">
-                     <i class="lni-map-marker"></i> New Yourk, US
-                   </div>
-                  </div>
-                  <div class="col-lg-2 col-md-12 col-xs-12 text-right">
-                    <span class="btn-full-time">Full Time</span>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                    <span class="btn-apply">Apply Now</span>
-                  </div>
-                </div>
-              </a>
-              <a class="job-listings" href="/dashboard">
-                <div class="row">
-                  <div class="col-lg-4 col-md-12 col-xs-12">
-                    <div class="job-company-logo">
-                      <img src="./bookmarked_files/img2.png" alt="">
-                    </div>
-                    <div class="job-details">
-                      <h3>Graphic Designer</h3>
-                      <span class="company-neme">
-                        Hunter Inc.
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                   <div class="location">
-                     <i class="lni-map-marker"></i> New Yourk, US
-                   </div>
-                  </div>
-                  <div class="col-lg-2 col-md-12 col-xs-12 text-right">
-                    <span class="btn-full-time">Full Time</span>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                    <span class="btn-apply">Apply Now</span>
-                  </div>
-                </div>
-              </a>
-              <a class="job-listings" href="/dashboard">
-                <div class="row">
-                  <div class="col-lg-4 col-md-12 col-xs-12">
-                    <div class="job-company-logo">
-                      <img src="./bookmarked_files/img3.png" alt="">
-                    </div>
-                    <div class="job-details">
-                      <h3>Managing Director</h3>
-                      <span class="company-neme">
-                        MagNews
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                   <div class="location">
-                     <i class="lni-map-marker"></i> New Yourk, US
-                   </div>
-                  </div>
-                  <div class="col-lg-2 col-md-12 col-xs-12 text-right">
-                    <span class="btn-full-time">Full Time</span>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                    <span class="btn-apply">Apply Now</span>
-                  </div>
-                </div>
-              </a>
-              <a class="job-listings" href="/dashboard">
-                <div class="row">
-                  <div class="col-lg-4 col-md-12 col-xs-12">
-                    <div class="job-company-logo">
-                      <img src="./bookmarked_files/img4.png" alt="">
-                    </div>
-                    <div class="job-details">
-                      <h3>Software Engineer</h3>
-                      <span class="company-neme">
-                        AmazeSoft
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                   <div class="location">
-                     <i class="lni-map-marker"></i> New Yourk, US
-                   </div>
-                  </div>
-                  <div class="col-lg-2 col-md-12 col-xs-12 text-right">
-                    <span class="btn-full-time">Full Time</span>
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
-                    <span class="btn-apply">Apply Now</span>
-                  </div>
-                </div>
-              </a>
+              <div id="job-listings-container"></div>
+
               <!-- Start Pagination -->
               <ul class="pagination">              
                 <li class="active"><a href="./bookmarked.html#" class="btn btn-common"><i class="ti-angle-left"></i> prev</a></li>
@@ -728,6 +627,69 @@
     <script src="./bookmarked_files/form-validator.min.js.download"></script>
     <script src="./bookmarked_files/contact-form-script.js.download"></script>   
     <script src="./bookmarked_files/main.js.download"></script>
+    <script>
+      const jobContainer = document.getElementById('job-listings-container'); 
+    
+      async function GetJobs() {
+        try {
+          const res = await fetch('/user/bookmark', {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+          const result = await res.json();
+          return result; // Should be an array
+        } catch (error) {
+          console.error("Error fetching jobs:", error);
+          return [];
+        }
+      }
+    
+      async function showJobs() {
+        const jobs = await GetJobs();
+        let html = '';
+    
+        if (!jobs.length) {
+          html = `<p>No bookmarked jobs found.</p>`;
+        } else {
+          jobs.forEach(job => {
+            html += `
+              <a class="job-listings" href="/job-details.html?id=${job._id}">
+                <div class="row">
+                  <div class="col-lg-4 col-md-12 col-xs-12">
+                    <div class="job-company-logo">
+                      <img src="${job.logo || './default-logo.png'}" height='20px' width='20px' alt="">
+                    </div>
+                    <div class="job-details">
+                      <h3>${job.title}</h3>
+                      <span class="company-neme">${job.company}</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
+                    <div class="location">
+                      <i class="lni-map-marker"></i> ${job.location}
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-12 col-xs-12 text-right">
+                    <span class="btn-full-time">${job.jobType}</span>
+                  </div>
+                  <div class="col-lg-3 col-md-12 col-xs-12 text-right">
+                    <span class="btn-apply">Apply Now</span>
+                  </div>
+                </div>
+              </a>
+            `;
+          });
+        }
+    
+        jobContainer.innerHTML = html; // Set the final HTML content
+      }
+    
+      // Run when page loads
+      document.addEventListener('DOMContentLoaded', showJobs);
+    </script>
     
   
 </body></html>
